@@ -1,8 +1,14 @@
+import type { Metadata } from 'next'
 import { getFilteredEvents, getCategories } from '@/lib/queries'
 import FilterBar from '@/components/FilterBar'
 import EventGrid from '@/components/EventGrid'
-import type { Metadata } from 'next'
+import Reveal from '@/components/Reveal'
 
+export const metadata: Metadata = {
+  title: 'All Events',
+  description:
+    'Browse every upcoming event — filter by category, search by name.',
+}
 
 export default async function EventsPage({
   searchParams,
@@ -26,28 +32,53 @@ export default async function EventsPage({
     getCategories(),
   ])
 
+  const activeCategory = categories.find((c) => c.slug === params.category)
+  const title = activeCategory ? activeCategory.name : 'All Events'
+
   return (
-    <main className="max-w-6xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold mb-6">All Events</h1>
+    <main className="pt-32 pb-24">
+      <div className="max-w-7xl mx-auto px-6">
+        <Reveal>
+          <header className="mb-12">
+            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
+              <span className="w-6 h-px bg-ember" />
+              The full list
+            </span>
+            <h1 className="text-balance text-5xl sm:text-7xl font-extrabold tracking-tight text-cream leading-[0.98] font-[family-name:var(--font-heading)] mb-4">
+              {title}
+            </h1>
+            <p className="text-sand text-lg max-w-xl">
+              {events.length} {events.length === 1 ? 'event' : 'events'} coming
+              up.
+            </p>
+          </header>
+        </Reveal>
 
-      <FilterBar categories={categories} />
+        <Reveal delay={0.1}>
+          <div className="mb-14">
+            <FilterBar categories={categories} />
+          </div>
+        </Reveal>
 
-      {events.length === 0 ? (
-        <p className="text-gray-500 py-12 text-center">
-          No events match your filters
-        </p>
-      ) : (
-        <EventGrid events={events} />
-      )}
+        {events.length === 0 ? (
+          <Reveal>
+            <div className="rounded-3xl border border-border bg-surface p-20 text-center">
+              <p className="text-6xl mb-6">🎭</p>
+              <h2 className="text-2xl font-bold text-cream mb-3 font-[family-name:var(--font-heading)]">
+                Nothing matches yet
+              </h2>
+              <p className="text-sand max-w-md mx-auto">
+                Try a different category, or clear your filters to see
+                everything.
+              </p>
+            </div>
+          </Reveal>
+        ) : (
+          <Reveal>
+            <EventGrid events={events} />
+          </Reveal>
+        )}
+      </div>
     </main>
   )
-}
-
-export const metadata: Metadata = {
-  title: 'All Events',
-  description: 'Browse all upcoming events — filter by category, date, and more.',
-  openGraph: {
-    title: 'All Events | DTR Global',
-    description: 'Browse all upcoming events — filter by category, date, and more.',
-  },
 }

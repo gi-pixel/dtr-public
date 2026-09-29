@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { Loader2 } from 'lucide-react'
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzezjnbp'
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
 
 export default function ContactForm() {
   const [name, setName] = useState('')
@@ -25,9 +26,7 @@ export default function ContactForm() {
         },
         body: JSON.stringify({ name, email, message }),
       })
-
-      if (!res.ok) throw new Error('Submission failed')
-
+      if (!res.ok) throw new Error()
       setStatus('success')
       setName('')
       setEmail('')
@@ -39,54 +38,72 @@ export default function ContactForm() {
     }
   }
 
+  const inputClass =
+    'w-full bg-ink border border-border rounded-xl px-4 py-3.5 text-cream placeholder:text-ash focus:outline-none focus:border-ember/60 focus:ring-1 focus:ring-ember/30 transition-colors'
+
   if (status === 'success') {
     return (
-      <div className="border border-green-200 bg-green-50 text-green-800 p-4 rounded">
-        Thanks — your message is on its way. We'll be in touch soon.
+      <div className="rounded-2xl border border-ember/40 bg-ember/5 p-10 text-center">
+        <p className="text-4xl mb-4">✉️</p>
+        <h3 className="text-xl font-bold text-cream mb-2 font-[family-name:var(--font-heading)]">
+          Message received
+        </h3>
+        <p className="text-sand">
+          We'll get back to you as soon as we can.
+        </p>
       </div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label className="block text-sm font-medium mb-1">Name</label>
+        <label className="block text-xs uppercase tracking-widest text-ash mb-2">
+          Name
+        </label>
         <input
           type="text"
           required
           disabled={loading}
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full border rounded px-3 py-2"
+          className={inputClass}
+          placeholder="Your name"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Email</label>
+        <label className="block text-xs uppercase tracking-widest text-ash mb-2">
+          Email
+        </label>
         <input
           type="email"
           required
           disabled={loading}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full border rounded px-3 py-2"
+          className={inputClass}
+          placeholder="you@example.com"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Message</label>
+        <label className="block text-xs uppercase tracking-widest text-ash mb-2">
+          Message
+        </label>
         <textarea
           required
           rows={6}
           disabled={loading}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="w-full border rounded px-3 py-2"
+          className={inputClass + ' resize-none'}
+          placeholder="Tell us what's on your mind…"
         />
       </div>
 
       {status === 'error' && (
-        <p className="text-sm text-red-600">
+        <p className="text-sm text-ember">
           Something went wrong. Please try again or email us directly.
         </p>
       )}
@@ -94,9 +111,10 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="bg-black text-white px-6 py-2 rounded hover:bg-gray-800 disabled:opacity-50"
+        className="inline-flex items-center justify-center gap-2 w-full bg-ember text-ink px-8 py-4 rounded-full font-bold tracking-wide hover:bg-ember-hover transition-all glow-ember disabled:opacity-60"
       >
-        {loading ? 'Sending...' : 'Send Message'}
+        {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+        {loading ? 'Sending…' : 'Send message'}
       </button>
     </form>
   )

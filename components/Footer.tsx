@@ -3,46 +3,70 @@ import { FaFacebook, FaInstagram, FaXTwitter } from 'react-icons/fa6'
 
 export default function Footer() {
   return (
-    <footer className="border-t mt-16 bg-white">
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-          <div>
-            <p className="font-bold text-lg">DTR Global</p>
-            <p className="text-sm text-gray-500 mt-1">
-              Discover events around you.
+    <footer className="relative border-t border-border bg-ink">
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          <div className="md:col-span-5">
+            <Link
+              href="/"
+              className="text-3xl font-extrabold tracking-tight font-[family-name:var(--font-heading)]"
+            >
+              <span className="text-cream">DTR</span>
+              <span className="text-ember">.</span>
+            </Link>
+            <p className="text-sand mt-4 max-w-sm leading-relaxed">
+              Curated events across the region. Discover something worth going
+              out for.
             </p>
           </div>
 
-          <div>
-            <p className="font-semibold text-sm mb-3">Quick Links</p>
-            <nav className="flex flex-col gap-2 text-sm text-gray-600">
-              <Link href="/events" className="hover:underline">
-                Events
+          <div className="md:col-span-3">
+            <p className="text-[11px] uppercase tracking-[0.25em] text-ash font-semibold mb-5">
+              Explore
+            </p>
+            <nav className="flex flex-col gap-3 text-sm">
+              {[
+                { href: '/events', label: 'Events' },
+                { href: '/gallery', label: 'Gallery' },
+                { href: '/about', label: 'About' },
+                { href: '/contact', label: 'Contact' },
+              ].map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-sand hover:text-ember transition-colors w-fit"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div className="md:col-span-2">
+            <p className="text-[11px] uppercase tracking-[0.25em] text-ash font-semibold mb-5">
+              Legal
+            </p>
+            <nav className="flex flex-col gap-3 text-sm">
+              <Link href="/privacy-policy" className="text-sand hover:text-ember transition-colors w-fit">
+                Privacy
               </Link>
-              <Link href="/about" className="hover:underline">
-                About
-              </Link>
-              <Link href="/contact" className="hover:underline">
-                Contact
-              </Link>
-              <Link href="/privacy-policy" className="hover:underline">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="hover:underline">
+              <Link href="/terms" className="text-sand hover:text-ember transition-colors w-fit">
                 Terms
               </Link>
             </nav>
           </div>
 
-          <div>
-            <p className="font-semibold text-sm mb-3">Follow Us</p>
-            <div className="flex gap-4 text-gray-600">
+          <div className="md:col-span-2">
+            <p className="text-[11px] uppercase tracking-[0.25em] text-ash font-semibold mb-5">
+              Follow
+            </p>
+            <div className="flex gap-4 text-sand">
               <a
                 href="https://instagram.com/dtrglobal"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="hover:text-black"
+                className="hover:text-ember transition-colors"
               >
                 <FaInstagram size={20} />
               </a>
@@ -51,7 +75,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="X"
-                className="hover:text-black"
+                className="hover:text-ember transition-colors"
               >
                 <FaXTwitter size={20} />
               </a>
@@ -60,7 +84,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="hover:text-black"
+                className="hover:text-ember transition-colors"
               >
                 <FaFacebook size={20} />
               </a>
@@ -68,9 +92,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="text-xs text-gray-400 mt-10 pt-6 border-t">
-          © {new Date().getFullYear()} DTR Global. All rights reserved.
-        </p>
+        <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-ash">
+            © {new Date().getFullYear()} DTR Global. All rights reserved.
+          </p>
+          <p className="text-xs text-ash">Made in Accra.</p>
+        </div>
       </div>
     </footer>
   )
