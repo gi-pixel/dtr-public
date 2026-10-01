@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FaFacebook, FaInstagram, FaXTwitter } from 'react-icons/fa6'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -7,17 +8,19 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-5">
-            <Link
-              href="/"
-              className="text-3xl font-extrabold tracking-tight font-[family-name:var(--font-heading)]"
-            >
-              <span className="text-cream">DTR</span>
-              <span className="text-ember">.</span>
+            <Link href="/" className="inline-block">
+              <Image
+                src="/logo.png"
+                alt="DTR Global"
+                width={180}
+                height={90}
+                className="h-12 w-auto"
+              />
             </Link>
-            <p className="text-sand mt-4 max-w-sm leading-relaxed">
-              Curated events across the region. Discover something worth going
-              out for.
-            </p>
+              <p className="text-sand mt-4 max-w-sm leading-relaxed">
+                More than a party. A culture. A movement. Premium nightlife
+                and cultural experiences since 2025.
+              </p>
           </div>
 
           <div className="md:col-span-3">
@@ -93,9 +96,9 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-ash">
-            © {new Date().getFullYear()} DTR Global. All rights reserved.
-          </p>
+        <p className="text-xs text-ash">
+          © {new Date().getFullYear()} DTR Global. Founded by Nii Nerte Nettey.
+        </p>
           <p className="text-xs text-ash">Made in Accra.</p>
         </div>
       </div>

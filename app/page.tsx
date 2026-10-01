@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getPublishedEvents } from '@/lib/queries'
+import { getPublishedEvents, getGalleryPreview } from '@/lib/queries'
 import HeroSection from '@/components/HeroSection'
 import FeaturedEventsSection from '@/components/FeaturedEventsSection'
 import HowItWorksSection from '@/components/HowItWorksSection'
@@ -7,20 +7,26 @@ import CategoryShowcase from '@/components/CategoryShowcase'
 import AboutDtrSection from '@/components/AboutDtrSection'
 import CtaBanner from '@/components/CtaBanner'
 import Reveal from '@/components/Reveal'
+import GalleryPreviewSection from '@/components/GalleryPreviewSection'
 
 export const metadata: Metadata = {
-  title: 'Discover Events',
+  title: 'DTR Global — More Than a Party',
   description:
-    'Parties, concerts, and cultural events — curated in one place.',
+    'Premium nightlife and cultural experiences. A culture. A movement. Built for a new generation.',
   openGraph: {
-    title: 'DTR Global — Discover Events',
+    title: 'DTR Global — More Than a Party',
     description:
-      'Parties, concerts, and cultural events — curated in one place.',
+      'Premium nightlife and cultural experiences. A culture. A movement.',
   },
 }
 
 export default async function HomePage() {
-  const events = await getPublishedEvents()
+
+// inside HomePage:
+  const [events, galleryPreview] = await Promise.all([
+    getPublishedEvents(),
+    getGalleryPreview(3),
+  ])
   const featured = events.filter((e) => e.is_featured)
   const showcase =
     featured.length > 0 ? featured.slice(0, 3) : events.slice(0, 3)
@@ -44,6 +50,12 @@ export default async function HomePage() {
       <Reveal>
         <AboutDtrSection />
       </Reveal>
+
+      {galleryPreview.length > 0 && (
+        <Reveal>
+          <GalleryPreviewSection images={galleryPreview} />
+        </Reveal>
+      )}
 
       <Reveal>
         <CtaBanner />

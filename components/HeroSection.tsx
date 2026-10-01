@@ -20,26 +20,26 @@ export default function HeroSection() {
 
       {/* Warm glow behind headline */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="w-[500px] h-[500px] rounded-full bg-ember/8 blur-[100px]" />
+      <div className="w-[500px] h-[500px] rounded-full bg-ember/4 blur-[100px]" />
       </div>
 
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 pt-20">
         <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-8">
-          <span className="w-8 h-px bg-ember" />
-          Now live in Accra
-          <span className="w-8 h-px bg-ember" />
-        </span>
+            <span className="w-8 h-px bg-ember" />
+            Since 2025 · Accra
+            <span className="w-8 h-px bg-ember" />
+          </span>
 
-        <h1 className="text-balance text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-[-0.04em] leading-[0.95] max-w-5xl font-[family-name:var(--font-heading)] mb-8">
-          Find your
-          <br />
-          <span className="text-ember">next night out.</span>
-        </h1>
+          <h1 className="text-balance text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-[-0.04em] leading-[0.95] max-w-5xl font-[family-name:var(--font-heading)] mb-8">
+            More than
+            <br />
+            <span className="text-ember">a party.</span>
+          </h1>
 
-        <p className="text-pretty text-lg sm:text-xl text-cream/70 max-w-xl mb-12">
-          Parties, concerts, and cultural events — curated. No digging, no
-          group chats, no missed weekends.
-        </p>
+          <p className="text-pretty text-lg sm:text-xl text-cream/70 max-w-xl mb-12">
+            A culture. A movement. Premium nightlife and cultural
+            experiences built for a new generation.
+          </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <Link

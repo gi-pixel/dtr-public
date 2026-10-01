@@ -21,10 +21,10 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://dtrglobal.com'),
   title: {
     template: '%s | DTR Global',
-    default: 'DTR Global — Discover Events',
+    default: 'DTR Global — More Than a Party',
   },
   description:
-    'Parties, concerts, and cultural events — curated in one place.',
+    'Youth-driven entertainment, nightlife, and cultural brand. Premium experiences for a new generation.',
 }
 
 export default function RootLayout({

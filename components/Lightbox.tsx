@@ -24,8 +24,7 @@ export default function Lightbox({
 
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') onClose()
-      if (e.key === 'ArrowRight')
-        setIndex((i) => (i + 1) % images.length)
+      if (e.key === 'ArrowRight') setIndex((i) => (i + 1) % images.length)
       if (e.key === 'ArrowLeft')
         setIndex((i) => (i - 1 + images.length) % images.length)
     }
@@ -48,13 +47,13 @@ export default function Lightbox({
       role="dialog"
       aria-modal="true"
       onClick={onClose}
-      className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
+      className="fixed inset-0 z-[100] bg-ink/95 backdrop-blur-sm flex items-center justify-center"
     >
       <button
         type="button"
         aria-label="Close"
         onClick={onClose}
-        className="absolute top-4 right-4 text-white/80 hover:text-white p-2"
+        className="absolute top-4 right-4 text-cream/80 hover:text-ember p-2"
       >
         <X className="h-6 w-6" />
       </button>
@@ -68,7 +67,7 @@ export default function Lightbox({
               e.stopPropagation()
               setIndex((i) => (i - 1 + images.length) % images.length)
             }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-2"
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-cream/80 hover:text-ember p-2"
           >
             <ChevronLeft className="h-8 w-8" />
           </button>
@@ -79,7 +78,7 @@ export default function Lightbox({
               e.stopPropagation()
               setIndex((i) => (i + 1) % images.length)
             }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-2"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-cream/80 hover:text-ember p-2"
           >
             <ChevronRight className="h-8 w-8" />
           </button>
@@ -92,20 +91,17 @@ export default function Lightbox({
       >
         <img
           src={current.image_url}
-          alt={current.alt_text ?? ''}
-          className="max-w-full max-h-[80vh] object-contain"
+          alt={current.alt_text ?? current.caption ?? ''}
+          className="max-w-full max-h-[80vh] object-contain rounded-2xl"
         />
-        {current.source === 'event' && current.eventTitle && (
-          <a
-            href={`/events/${current.eventSlug}`}
-            className="text-sm text-white/80 hover:text-white underline"
-          >
-            {current.eventTitle}
-          </a>
+        {current.caption && (
+          <p className="text-sm text-cream/70 text-center max-w-lg">
+            {current.caption}
+          </p>
         )}
       </div>
 
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm tabular-nums">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-cream/60 text-sm tabular-nums">
         {index + 1} / {images.length}
       </div>
     </div>

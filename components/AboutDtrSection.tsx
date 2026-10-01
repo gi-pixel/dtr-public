@@ -11,14 +11,14 @@ export default function AboutDtrSection() {
               About DTR
             </span>
             <h2 className="text-balance text-4xl sm:text-6xl font-extrabold leading-[0.98] mb-8 font-[family-name:var(--font-heading)]">
-              One place.
+              Built for
               <br />
-              <span className="text-ember">Everything happening.</span>
+              <span className="text-ember">the culture.</span>
             </h2>
             <p className="text-lg text-ink/70 leading-relaxed max-w-xl mb-10">
-              DTR Global brings the best parties, concerts, and cultural events
-              into one curated listing. Spend less time searching and more time
-              out. No accounts, no paywalls, no clutter.
+              Founded in 2025 by Nii Nerte Nettey, DTR Global is a youth-driven
+              entertainment and cultural brand — creating premium experiences,
+              unforgettable moments, and trend-defining events.
             </p>
             <Link
               href="/about"

@@ -59,9 +59,9 @@ export default function ContactPage() {
               <ContactCard
                 icon={<Mail className="h-5 w-5" />}
                 label="Email us"
-                value="hello@dtrglobal.com"
+                value="dtrglobal233@gmail.com"
                 description="Best for general questions, press, and partnerships."
-                href="mailto:hello@dtrglobal.com"
+                href="mailto:dtrglobal233@gmail.com"
               />
             </Reveal>
 
@@ -69,9 +69,9 @@ export default function ContactPage() {
               <ContactCard
                 icon={<Sparkles className="h-5 w-5" />}
                 label="Submit an event"
-                value="events@dtrglobal.com"
+                value="dtrglobal233@gmail.com"
                 description="Include the event name, date, venue, ticket link, and a flyer."
-                href="mailto:events@dtrglobal.com"
+                href="mailto:dtrglobal233@gmail.com"
               />
             </Reveal>
 
@@ -165,7 +165,7 @@ export default function ContactPage() {
             {[
               {
                 q: 'How do I get my event listed?',
-                a: 'Email events@dtrglobal.com with the event name, date, venue, ticket link, and a flyer or cover image. We review and publish manually.',
+                a: 'Email dtrglobal233@gmail.com with the event name, date, venue, ticket link, and a flyer or cover image. We review and publish manually.',
               },
               {
                 q: 'How much does listing cost?',
@@ -185,7 +185,7 @@ export default function ContactPage() {
               },
               {
                 q: 'Can I partner or advertise?',
-                a: 'Yes — email hello@dtrglobal.com with details about what you have in mind.',
+                a: 'Yes — email dtrglobal233@gmail.com with details about what you have in mind.',
               },
             ].map((faq, i) => (
               <Reveal key={faq.q} delay={i * 0.05}>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
 
 const links = [
   { href: '/', label: 'Home' },
@@ -40,12 +41,15 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link
-          href="/"
-          className="text-xl sm:text-2xl font-extrabold tracking-tight font-[family-name:var(--font-heading)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-        >
-          <span className="text-cream">DTR</span>
-          <span className="text-ember">.</span>
+        <Link href="/" className="flex items-center shrink-0">
+          <Image
+            src="/logo.png"
+            alt="DTR Global"
+            width={140}
+            height={70}
+            priority
+            className="h-10 w-auto sm:h-12 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1 text-sm">

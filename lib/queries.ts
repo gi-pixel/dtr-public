@@ -107,64 +107,26 @@ export type GalleryImage = {
   id: string
   image_url: string
   alt_text: string | null
-  source: 'brand' | 'event'
-  eventTitle?: string | null
-  eventSlug?: string | null
+  caption: string | null
 }
 
 export async function getGalleryImages(): Promise<GalleryImage[]> {
-  const LIMIT = 60
+  const { data, error } = await supabase
+    .from('media_library')
+    .select('id, image_url, alt_text, caption')
+    .order('created_at', { ascending: false })
 
-  const [brandRes, eventRes] = await Promise.all([
-    supabase
-      .from('media_library')
-      .select('id, image_url, alt_text, created_at')
-      .order('created_at', { ascending: false })
-      .limit(LIMIT),
-    supabase
-      .from('event_images')
-      .select(
-        'id, image_url, alt_text, created_at, events(title, slug, status)'
-      )
-      .order('created_at', { ascending: false })
-      .limit(LIMIT),
-  ])
+  if (error) throw error
+  return data ?? []
+}
 
-  if (brandRes.error) throw brandRes.error
-  if (eventRes.error) throw eventRes.error
+export async function getGalleryPreview(limit = 3): Promise<GalleryImage[]> {
+  const { data, error } = await supabase
+    .from('media_library')
+    .select('id, image_url, alt_text, caption')
+    .order('created_at', { ascending: false })
+    .limit(limit)
 
-  const brand: GalleryImage[] = (brandRes.data ?? []).map((row: any) => ({
-    id: row.id,
-    image_url: row.image_url,
-    alt_text: row.alt_text ?? null,
-    source: 'brand',
-  }))
-
-  const events: GalleryImage[] = (eventRes.data ?? [])
-    .filter((row: any) => {
-      const ev = Array.isArray(row.events) ? row.events[0] : row.events
-      // Only surface gallery images for published events
-      return ev?.status === 'published'
-    })
-    .map((row: any) => {
-      const ev = Array.isArray(row.events) ? row.events[0] : row.events
-      return {
-        id: row.id,
-        image_url: row.image_url,
-        alt_text: row.alt_text ?? null,
-        source: 'event',
-        eventTitle: ev?.title ?? null,
-        eventSlug: ev?.slug ?? null,
-      }
-    })
-
-  // Interleave so brand and event images mix rather than group
-  const merged: GalleryImage[] = []
-  const maxLen = Math.max(brand.length, events.length)
-  for (let i = 0; i < maxLen; i++) {
-    if (brand[i]) merged.push(brand[i])
-    if (events[i]) merged.push(events[i])
-  }
-
-  return merged.slice(0, LIMIT)
+  if (error) throw error
+  return data ?? []
 }
