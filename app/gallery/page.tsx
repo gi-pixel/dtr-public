@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { getGalleryImages } from '@/lib/queries'
 import GalleryGrid from '@/components/GalleryGrid'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Gallery',
   description:

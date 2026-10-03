@@ -9,6 +9,8 @@ import CtaBanner from '@/components/CtaBanner'
 import Reveal from '@/components/Reveal'
 import GalleryPreviewSection from '@/components/GalleryPreviewSection'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'DTR Global — More Than a Party',
   description:
