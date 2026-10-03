@@ -65,7 +65,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-4 text-sand">
               <a
-                href="https://instagram.com/dtrglobal"
+                href="https://instagram.com/dtrglobal_"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"

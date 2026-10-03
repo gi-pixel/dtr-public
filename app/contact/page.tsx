@@ -100,7 +100,7 @@ export default function ContactPage() {
                 </p>
                 <div className="flex gap-3">
                   <a
-                    href="https://instagram.com/dtrglobal"
+                    href="https://instagram.com/dtrglobal_"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
