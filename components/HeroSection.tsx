@@ -18,11 +18,6 @@ export default function HeroSection() {
       {/* Multi-layer gradient: dark at top for header legibility, dark at bottom for content */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-ink" />
 
-      {/* Warm radial ember bloom behind headline */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[900px] h-[900px] rounded-full bg-gradient-ember-radial" />
-      </div>
-
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 pt-20">
         <h1 className="text-balance text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-[-0.04em] leading-[0.95] max-w-5xl font-[family-name:var(--font-heading)] mb-8">
           More than

@@ -2,25 +2,30 @@ import Link from 'next/link'
 
 export default function CtaBanner() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-ember/40 via-ink to-ink" />
-      <div className="absolute inset-0 bg-gradient-ember-radial opacity-60" />
-      <div className="absolute inset-0 grain" />
+    <section className="bg-ember">
+      <div className="max-w-7xl mx-auto px-6 py-16 sm:py-20">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div className="max-w-2xl">
+            <span className="inline-block text-xs uppercase tracking-[0.25em] text-white/80 font-bold mb-3">
+              Host an Event
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white font-[family-name:var(--font-heading)] leading-[1.05] mb-4">
+              Ready to Bring Your Event to Life?
+            </h2>
+            <p className="text-sm sm:text-base text-white/85 leading-relaxed max-w-lg">
+              Reach thousands of people, manage tickets, and create
+              unforgettable experiences with DTR Global.
+            </p>
+          </div>
 
-      <div className="relative max-w-5xl mx-auto px-6 py-28 text-center">
-        <h2 className="text-balance text-4xl sm:text-6xl font-extrabold text-cream leading-[1] mb-6 font-[family-name:var(--font-heading)]">
-          Hosting an event?
-        </h2>
-        <p className="text-pretty text-lg sm:text-xl text-cream/80 max-w-xl mx-auto mb-10">
-          Get it in front of the right crowd. Submitting takes minutes.
-        </p>
-        <Link
-          href="/contact"
-          className="inline-flex items-center gap-2 bg-ember text-ink px-8 py-4 rounded-full font-semibold hover:bg-ember-hover transition-all glow-ember"
-        >
-          Get in touch
-          <span>→</span>
-        </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 bg-white text-ink px-7 py-3.5 rounded-full font-bold text-sm hover:bg-white/90 transition-colors shrink-0"
+          >
+            Host an Event
+            <span>→</span>
+          </Link>
+        </div>
       </div>
     </section>
   )

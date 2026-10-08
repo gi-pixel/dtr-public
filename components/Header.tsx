@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
-import Image from 'next/image'
 
 const links = [
   { href: '/', label: 'Home' },
@@ -34,9 +34,9 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-ink/80 backdrop-blur-xl border-b border-border'
+          ? 'bg-ink/95 backdrop-blur-xl border-b border-border'
           : 'bg-gradient-to-b from-black/60 via-black/20 to-transparent'
       }`}
     >
@@ -48,11 +48,11 @@ export default function Header() {
             width={140}
             height={70}
             priority
-            className="h-10 w-auto sm:h-12 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+            className="h-9 w-auto sm:h-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1 text-sm">
+        <nav className="hidden lg:flex items-center gap-8 text-sm">
           {links.map((l) => {
             const active =
               l.href === '/' ? pathname === '/' : pathname.startsWith(l.href)
@@ -60,32 +60,30 @@ export default function Header() {
               <Link
                 key={l.href}
                 href={l.href}
-                className={`relative px-4 py-2 rounded-full transition-colors duration-200 ${
-                  active
-                    ? 'text-ember'
-                    : 'text-cream/90 hover:text-ember'
+                className={`relative py-2 transition-colors ${
+                  active ? 'text-ember' : 'text-cream hover:text-ember'
                 }`}
               >
                 {l.label}
                 {active && (
-                  <span className="absolute inset-x-4 -bottom-1 h-px bg-ember" />
+                  <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-ember rounded-full" />
                 )}
               </Link>
             )
           })}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Link
             href="/events"
-            className="inline-block bg-ember text-ink text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-ember-hover transition-colors glow-ember"
+            className="inline-block bg-ember text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-ember-hover transition-colors"
           >
-            Browse Events
+            Get Tickets
           </Link>
         </div>
 
         <button
-          className="md:hidden p-2 -mr-2 text-cream drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
+          className="lg:hidden p-2 -mr-2 text-cream"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}
@@ -95,19 +93,17 @@ export default function Header() {
       </div>
 
       {open && (
-        <nav className="md:hidden border-t border-border bg-ink/95 backdrop-blur-xl">
+        <nav className="lg:hidden border-t border-border bg-ink/95 backdrop-blur-xl">
           <div className="flex flex-col px-6 py-4 gap-1">
             {links.map((l) => {
               const active =
-                l.href === '/'
-                  ? pathname === '/'
-                  : pathname.startsWith(l.href)
+                l.href === '/' ? pathname === '/' : pathname.startsWith(l.href)
               return (
                 <Link
                   key={l.href}
                   href={l.href}
                   className={`py-3 text-base ${
-                    active ? 'text-ember' : 'text-cream/90'
+                    active ? 'text-ember' : 'text-cream'
                   }`}
                 >
                   {l.label}
@@ -116,9 +112,9 @@ export default function Header() {
             })}
             <Link
               href="/events"
-              className="mt-3 inline-block bg-ember text-ink text-center font-semibold px-5 py-3 rounded-full"
+              className="mt-3 inline-block bg-ember text-white text-center font-semibold px-5 py-3 rounded-full"
             >
-              Browse Events
+              Get Tickets
             </Link>
           </div>
         </nav>

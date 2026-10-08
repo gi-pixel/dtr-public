@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Mail, MapPin, Clock, MessageSquare, Sparkles } from 'lucide-react'
+import { Mail, MapPin, Clock, Sparkles } from 'lucide-react'
 import { FaInstagram, FaXTwitter } from 'react-icons/fa6'
 import ContactForm from '@/components/ContactForm'
 import Reveal from '@/components/Reveal'
+import FaqAccordion from '@/components/FaqAccordion'
+import FaqGrid from '@/components/FaqGrid'
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -16,26 +18,57 @@ export const metadata: Metadata = {
   },
 }
 
+const FAQ_ITEMS = [
+  {
+    q: 'How do I get my event listed?',
+    a: 'Email dtrglobal233@gmail.com with the event name, date, venue, ticket link, and a flyer or cover image. We review and publish manually.',
+  },
+  {
+    q: 'How much does listing cost?',
+    a: 'Nothing. Listing is free. We take zero cut of any ticket sales — money goes straight to the organizer.',
+  },
+  {
+    q: 'Can I buy tickets through DTR?',
+    a: "No. Every ticket purchase happens on the organizer's own platform — Eventbrite, Ticketmaster, or their own shop.",
+  },
+  {
+    q: 'I bought a ticket and have a problem.',
+    a: "Contact the ticketing platform where you made the purchase. We don't process payments and can't issue refunds.",
+  },
+  {
+    q: 'Do I need an account?',
+    a: 'Never. Browsing is fully anonymous. No signup, no email, no account required.',
+  },
+  {
+    q: 'Can I partner or advertise?',
+    a: 'Yes — email dtrglobal233@gmail.com with details about what you have in mind.',
+  },
+]
+
 export default function ContactPage() {
   return (
     <main className="overflow-hidden">
-      {/* ─────────────────── HERO ─────────────────── */}
-      <section className="relative pt-40 pb-24 grain">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 pointer-events-none">
-          <div className="w-[900px] h-[900px] rounded-full bg-gradient-ember-radial" />
-        </div>
+      {/* ─── HERO ─── */}
+      <section className="relative pt-40 pb-20 overflow-hidden">
+        {/* Diagonal ember wash — mirrored from About (top-right origin) */}
+        <div className="absolute inset-0 bg-gradient-to-bl from-ember/15 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 grain opacity-40 pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-6">
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
+          <Reveal>
+            <span className="inline-block text-xs uppercase tracking-[0.35em] text-ember font-bold mb-6">
+              Get in touch
+            </span>
+          </Reveal>
+
           <Reveal delay={0.1}>
-            <h1 className="text-balance text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-[-0.035em] leading-[0.98] text-cream max-w-3xl font-[family-name:var(--font-heading)]">
+            <h1 className="text-balance text-5xl sm:text-7xl font-extrabold tracking-[-0.04em] leading-[0.95] text-cream font-[family-name:var(--font-heading)]">
               Say hello.
-              <br />
-              <span className="text-ember">Or send us an event.</span>
             </h1>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <p className="text-balance text-xl sm:text-2xl text-sand leading-relaxed max-w-2xl mt-10">
+            <p className="text-balance text-lg sm:text-xl text-sand leading-relaxed max-w-xl mx-auto mt-8">
               Whether you're submitting a night, partnering with us, or just
               curious — we read everything and respond personally.
             </p>
@@ -43,11 +76,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ─────────────────── FORM + INFO ─────────────────── */}
-      <section className="max-w-7xl mx-auto px-6 pb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+      {/* ─── FORM + INFO ─── */}
+      <section className="max-w-7xl mx-auto px-6 pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14">
           {/* LEFT — contact methods */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-3 space-y-4">
             <Reveal>
               <ContactCard
                 icon={<Mail className="h-5 w-5" />}
@@ -87,8 +120,8 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.2}>
-              <div className="pt-4">
-                <p className="text-xs uppercase tracking-[0.3em] text-ash font-semibold mb-4">
+              <div className="pt-2">
+                <p className="text-xs uppercase tracking-[0.3em] text-ash font-bold mb-4">
                   Or find us
                 </p>
                 <div className="flex gap-3">
@@ -97,37 +130,36 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
-                    className="flex items-center justify-center h-12 w-12 rounded-full border border-border bg-surface text-cream/80 hover:border-ember/60 hover:text-ember hover:bg-ember/5 transition-colors"
+                    className="flex items-center justify-center h-11 w-11 rounded-full border border-border text-sand hover:border-ember hover:text-ember transition-colors"
                   >
-                    <FaInstagram className="h-5 w-5" />
+                    <FaInstagram className="h-4 w-4" />
                   </a>
                   <a
                     href="https://x.com/dtrglobal"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="X"
-                    className="flex items-center justify-center h-12 w-12 rounded-full border border-border bg-surface text-cream/80 hover:border-ember/60 hover:text-ember hover:bg-ember/5 transition-colors"
+                    className="flex items-center justify-center h-11 w-11 rounded-full border border-border text-sand hover:border-ember hover:text-ember transition-colors"
                   >
-                    <FaXTwitter className="h-5 w-5" />
+                    <FaXTwitter className="h-4 w-4" />
                   </a>
                 </div>
               </div>
             </Reveal>
           </div>
 
-          {/* RIGHT — the form */}
-          <div className="lg:col-span-3">
+          {/* RIGHT — the form (smaller) */}
+          <div className="lg:col-span-2">
             <Reveal delay={0.1}>
-              <div className="relative rounded-3xl border border-border bg-surface overflow-hidden">
+              <div className="relative rounded-2xl border border-border bg-surface overflow-hidden lg:sticky lg:top-28">
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ember to-transparent" />
-                <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-gradient-ember-radial opacity-50 pointer-events-none" />
 
-                <div className="relative p-8 sm:p-12">
-                  <div className="mb-8">
-                    <h2 className="text-3xl sm:text-4xl font-extrabold text-cream mb-3 font-[family-name:var(--font-heading)] leading-tight">
+                <div className="p-5 sm:p-6">
+                  <div className="mb-4">
+                    <h2 className="text-lg font-bold text-cream mb-1 font-[family-name:var(--font-heading)] leading-tight">
                       Send a message
                     </h2>
-                    <p className="text-sand">
+                    <p className="text-xs text-sand">
                       We'll get back to you at the email you provide.
                     </p>
                   </div>
@@ -140,82 +172,35 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ─────────────────── BEFORE YOU WRITE ─────────────────── */}
+      {/* ─── FAQ — accordion on mobile, grid on desktop ─── */}
       <section className="border-y border-border bg-surface">
-        <div className="max-w-7xl mx-auto px-6 py-32">
+        <div className="max-w-7xl mx-auto px-6 py-20">
           <Reveal>
-            <div className="mb-16 max-w-2xl">
-              <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
+            <div className="mb-10 max-w-2xl">
+              <span className="inline-block text-xs uppercase tracking-[0.3em] text-ember font-bold mb-4">
                 Before you write
               </span>
-              <h2 className="text-4xl sm:text-5xl font-extrabold text-cream leading-[1.02] font-[family-name:var(--font-heading)]">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-cream leading-[1.05] font-[family-name:var(--font-heading)]">
                 Quick answers to common questions.
               </h2>
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                q: 'How do I get my event listed?',
-                a: 'Email dtrglobal233@gmail.com with the event name, date, venue, ticket link, and a flyer or cover image. We review and publish manually.',
-              },
-              {
-                q: 'How much does listing cost?',
-                a: 'Nothing. Listing is free. We take zero cut of any ticket sales — money goes straight to the organizer.',
-              },
-              {
-                q: 'Can I buy tickets through DTR?',
-                a: "No. Every ticket purchase happens on the organizer's own platform — Eventbrite, Ticketmaster, or their own shop.",
-              },
-              {
-                q: 'I bought a ticket and have a problem.',
-                a: 'Contact the ticketing platform where you made the purchase. We don\'t process payments and can\'t issue refunds.',
-              },
-              {
-                q: 'Do I need an account?',
-                a: 'Never. Browsing is fully anonymous. No signup, no email, no account required.',
-              },
-              {
-                q: 'Can I partner or advertise?',
-                a: 'Yes — email dtrglobal233@gmail.com with details about what you have in mind.',
-              },
-            ].map((faq, i) => (
-              <Reveal key={faq.q} delay={i * 0.05}>
-                <div className="relative h-full p-7 rounded-2xl bg-ink border border-border hover:border-ember/60 transition-colors overflow-hidden group">
-                  <div className="absolute inset-0 bg-gradient-ember-up opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="relative flex items-start gap-4">
-                    <div className="shrink-0 mt-1 h-8 w-8 rounded-full bg-ember/10 border border-ember/30 flex items-center justify-center">
-                      <MessageSquare className="h-3.5 w-3.5 text-ember" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-cream mb-2 font-[family-name:var(--font-heading)] leading-tight">
-                        {faq.q}
-                      </h3>
-                      <p className="text-sand leading-relaxed text-sm">
-                        {faq.a}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={0.1}>
+            <FaqAccordion items={FAQ_ITEMS} />
+            <FaqGrid items={FAQ_ITEMS} />
+          </Reveal>
         </div>
       </section>
 
-      {/* ─────────────────── CTA ─────────────────── */}
-      <section className="relative grain">
-        <div className="absolute inset-0 bg-gradient-to-br from-ember/40 via-ink to-ink" />
-        <div className="absolute inset-0 bg-gradient-ember-radial opacity-60" />
-        <div className="relative max-w-5xl mx-auto px-6 py-32 text-center">
+      {/* ─── CTA ─── */}
+      <section className="bg-ember">
+        <div className="max-w-5xl mx-auto px-6 py-20 text-center">
           <Reveal>
-            <h2 className="text-balance text-4xl sm:text-6xl lg:text-7xl font-extrabold text-cream leading-[1] mb-8 font-[family-name:var(--font-heading)]">
-              Not sure where
-              <br />
-              <span className="text-ember">to start?</span>
+            <h2 className="text-balance text-4xl sm:text-5xl font-extrabold text-white leading-[1] mb-6 font-[family-name:var(--font-heading)]">
+              Not sure where to start?
             </h2>
-            <p className="text-lg sm:text-xl text-cream/80 max-w-xl mx-auto mb-12">
+            <p className="text-lg text-white/85 max-w-xl mx-auto mb-10">
               Browse what's on first. If something's missing, that's what the
               form is for.
             </p>
@@ -223,14 +208,14 @@ export default function ContactPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/events"
-                className="inline-flex items-center gap-2 bg-ember text-ink px-8 py-4 rounded-full font-bold tracking-wide hover:bg-ember-hover transition-all glow-ember"
+                className="inline-flex items-center gap-2 bg-ink text-white px-8 py-4 rounded-full font-bold tracking-wide hover:bg-black transition-all"
               >
                 Browse events
                 <span>→</span>
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 text-cream/80 hover:text-ember px-8 py-4 rounded-full font-medium transition-colors"
+                className="inline-flex items-center gap-2 text-white hover:text-ink px-8 py-4 rounded-full font-medium transition-colors border border-white/30 hover:border-ink"
               >
                 Learn about DTR
               </Link>
@@ -241,8 +226,6 @@ export default function ContactPage() {
     </main>
   )
 }
-
-/* ─────────────────── Info Card ─────────────────── */
 
 function ContactCard({
   icon,
@@ -258,17 +241,16 @@ function ContactCard({
   href?: string
 }) {
   const inner = (
-    <div className="relative p-6 rounded-2xl bg-surface border border-border hover:border-ember/60 transition-colors group overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-ember-up opacity-0 group-hover:opacity-100 transition-opacity" />
-      <div className="relative flex items-start gap-4">
-        <div className="shrink-0 h-11 w-11 rounded-full bg-ember/10 border border-ember/30 flex items-center justify-center text-ember group-hover:bg-ember/20 transition-colors">
+    <div className="relative p-5 rounded-2xl bg-surface border border-border hover:border-ember/60 transition-colors group">
+      <div className="flex items-start gap-4">
+        <div className="shrink-0 h-10 w-10 rounded-full bg-ember/10 flex items-center justify-center text-ember group-hover:bg-ember/20 transition-colors">
           {icon}
         </div>
         <div className="min-w-0">
-          <p className="text-[10px] uppercase tracking-[0.25em] text-ash font-semibold mb-1.5">
+          <p className="text-[10px] uppercase tracking-[0.25em] text-ash font-bold mb-1.5">
             {label}
           </p>
-          <p className="text-cream font-semibold break-words mb-1.5">
+          <p className="text-cream font-semibold break-words mb-1.5 text-sm">
             {value}
           </p>
           <p className="text-sm text-sand leading-relaxed">{description}</p>

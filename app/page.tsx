@@ -1,37 +1,39 @@
+// app/page.tsx
 import type { Metadata } from 'next'
 import { getPublishedEvents, getGalleryPreview } from '@/lib/queries'
 import HeroSection from '@/components/HeroSection'
 import FeaturedEventsSection from '@/components/FeaturedEventsSection'
+import FeaturedEventSection from '@/components/FeaturedEventSection'
 import HowItWorksSection from '@/components/HowItWorksSection'
 import CategoryShowcase from '@/components/CategoryShowcase'
-import AboutDtrSection from '@/components/AboutDtrSection'
+import GalleryPreviewSection from '@/components/GalleryPreviewSection'
 import CtaBanner from '@/components/CtaBanner'
 import Reveal from '@/components/Reveal'
-import GalleryPreviewSection from '@/components/GalleryPreviewSection'
 
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'DTR Global — More Than a Party',
+  title: 'Discover Events',
   description:
-    'Premium nightlife and cultural experiences. A culture. A movement. Built for a new generation.',
+    'Premium nightlife and cultural experiences. A culture. A movement.',
   openGraph: {
-    title: 'DTR Global — More Than a Party',
+    title: 'DTR Global — Discover Events',
     description:
       'Premium nightlife and cultural experiences. A culture. A movement.',
   },
 }
 
 export default async function HomePage() {
-
-// inside HomePage:
   const [events, galleryPreview] = await Promise.all([
     getPublishedEvents(),
-    getGalleryPreview(3),
+    getGalleryPreview(5),
   ])
+
   const featured = events.filter((e) => e.is_featured)
   const showcase =
-    featured.length > 0 ? featured.slice(0, 3) : events.slice(0, 3)
+    featured.length > 0 ? featured.slice(0, 4) : events.slice(0, 4)
+
+  const spotlight = featured[0] ?? events[0]
 
   return (
     <main>
@@ -49,9 +51,11 @@ export default async function HomePage() {
         <CategoryShowcase />
       </Reveal>
 
-      <Reveal>
-        <AboutDtrSection />
-      </Reveal>
+      {spotlight && (
+        <Reveal>
+          <FeaturedEventSection event={spotlight} />
+        </Reveal>
+      )}
 
       {galleryPreview.length > 0 && (
         <Reveal>

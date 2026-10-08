@@ -17,32 +17,22 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
 
   return (
     <>
-      <div className="columns-2 md:columns-3 lg:columns-4 gap-4 [column-fill:_balance]">
-        {images.map((img, i) => (
-          <figure
-            key={img.id}
-            className="mb-4 break-inside-avoid"
-          >
-            <button
-              type="button"
-              onClick={() => setOpenIndex(i)}
-              className="block w-full rounded-xl overflow-hidden bg-surface border border-border hover:border-ember/60 transition-all group"
-            >
-              <img
-                src={img.image_url}
-                alt={img.alt_text ?? img.caption ?? ''}
-                loading="lazy"
-                className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
-              />
-            </button>
-            {img.caption && (
-              <figcaption className="mt-2 text-xs text-ash px-1">
-                {img.caption}
-              </figcaption>
-            )}
-          </figure>
-        ))}
-      </div>
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+      {images.map((img, i) => (
+        <button
+          key={img.id}
+          type="button"
+          onClick={() => setOpenIndex(i)}
+          className="relative aspect-square rounded-xl overflow-hidden bg-surface border border-border hover:border-ember/60 transition-all group"
+        >
+          <img
+            src={img.image_url}
+            alt={img.alt_text ?? img.caption ?? ''}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </button>
+      ))}
+    </div>
 
       <Lightbox
         images={images}

@@ -1,34 +1,78 @@
 import Link from 'next/link'
-import { FaFacebook, FaInstagram, FaXTwitter } from 'react-icons/fa6'
 import Image from 'next/image'
+import { ArrowRight } from 'lucide-react'
+import {
+  FaInstagram,
+  FaXTwitter,
+  FaFacebook,
+  FaYoutube,
+} from 'react-icons/fa6'
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-border bg-ink">
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-          <div className="md:col-span-5">
-            <Link href="/" className="inline-block">
-              <Image
-                src="/logo.png"
-                alt="DTR Global"
-                width={180}
-                height={90}
-                className="h-12 w-auto"
-              />
-            </Link>
-              <p className="text-sand mt-4 max-w-sm leading-relaxed">
-                More than a party. A culture. A movement. Premium nightlife
-                and cultural experiences since 2025.
-              </p>
+    <footer className="border-t border-border bg-ink">
+      <div className="max-w-7xl mx-auto px-6 py-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+          {/* Column 1 — brand */}
+          <div className="col-span-2 md:col-span-1">
+            <Image
+              src="/logo.png"
+              alt="DTR Global"
+              width={140}
+              height={70}
+              className="h-9 w-auto mb-4"
+            />
+            <p className="text-sm text-sand mb-6">
+              Events. People. Culture.
+            </p>
+            <div className="flex gap-3">
+              <a
+                href="https://instagram.com/dtrglobal_"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="flex items-center justify-center h-9 w-9 rounded-full border border-border text-cream/70 hover:border-ember hover:text-ember transition-colors"
+              >
+                <FaInstagram className="h-4 w-4" />
+              </a>
+              <a
+                href="https://x.com/dtrglobal"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X"
+                className="flex items-center justify-center h-9 w-9 rounded-full border border-border text-cream/70 hover:border-ember hover:text-ember transition-colors"
+              >
+                <FaXTwitter className="h-4 w-4" />
+              </a>
+              <a
+                href="https://facebook.com/dtrglobal"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="flex items-center justify-center h-9 w-9 rounded-full border border-border text-cream/70 hover:border-ember hover:text-ember transition-colors"
+              >
+                <FaFacebook className="h-4 w-4" />
+              </a>
+              <a
+                href="https://youtube.com/@dtrglobal"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                className="flex items-center justify-center h-9 w-9 rounded-full border border-border text-cream/70 hover:border-ember hover:text-ember transition-colors"
+              >
+                <FaYoutube className="h-4 w-4" />
+              </a>
+            </div>
           </div>
 
-          <div className="md:col-span-3">
-            <p className="text-[11px] uppercase tracking-[0.25em] text-ash font-semibold mb-5">
-              Explore
+          {/* Column 2 — Quick Links */}
+          <div>
+            <p className="text-xs uppercase tracking-[0.2em] text-cream font-bold mb-4">
+              Quick Links
             </p>
-            <nav className="flex flex-col gap-3 text-sm">
+            <nav className="flex flex-col gap-3 text-sm text-sand">
               {[
+                { href: '/', label: 'Home' },
                 { href: '/events', label: 'Events' },
                 { href: '/gallery', label: 'Gallery' },
                 { href: '/about', label: 'About' },
@@ -37,7 +81,7 @@ export default function Footer() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="text-sand hover:text-ember transition-colors w-fit"
+                  className="hover:text-ember transition-colors w-fit"
                 >
                   {l.label}
                 </Link>
@@ -45,61 +89,65 @@ export default function Footer() {
             </nav>
           </div>
 
-          <div className="md:col-span-2">
-            <p className="text-[11px] uppercase tracking-[0.25em] text-ash font-semibold mb-5">
-              Legal
+          {/* Column 3 — Support */}
+          <div>
+            <p className="text-xs uppercase tracking-[0.2em] text-cream font-bold mb-4">
+              Support
             </p>
-            <nav className="flex flex-col gap-3 text-sm">
-              <Link href="/privacy-policy" className="text-sand hover:text-ember transition-colors w-fit">
-                Privacy
+            <nav className="flex flex-col gap-3 text-sm text-sand">
+              <Link href="/contact" className="hover:text-ember transition-colors w-fit">
+                Help Center
               </Link>
-              <Link href="/terms" className="text-sand hover:text-ember transition-colors w-fit">
-                Terms
+              <Link href="/terms" className="hover:text-ember transition-colors w-fit">
+                Terms & Conditions
+              </Link>
+              <Link href="/privacy-policy" className="hover:text-ember transition-colors w-fit">
+                Privacy Policy
+              </Link>
+              <Link href="/contact" className="hover:text-ember transition-colors w-fit">
+                FAQs
               </Link>
             </nav>
           </div>
 
-          <div className="md:col-span-2">
-            <p className="text-[11px] uppercase tracking-[0.25em] text-ash font-semibold mb-5">
-              Follow
+          {/* Column 4 — Stay in the Loop */}
+          <div className="col-span-2 md:col-span-1">
+            <p className="text-xs uppercase tracking-[0.2em] text-cream font-bold mb-4">
+              Stay in the Loop
             </p>
-            <div className="flex gap-4 text-sand">
-              <a
-                href="https://instagram.com/dtrglobal_"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="hover:text-ember transition-colors"
+            <p className="text-sm text-sand mb-4">
+              Get updates on the latest events, exclusive offers and more.
+            </p>
+            <form
+              action="mailto:dtrglobal233@gmail.com"
+              method="post"
+              encType="text/plain"
+              className="flex gap-2"
+            >
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="Enter your email"
+                className="flex-1 bg-surface border border-border rounded-full px-4 py-2.5 text-sm text-cream placeholder:text-ash focus:outline-none focus:border-ember/60 transition-colors"
+              />
+              <button
+                type="submit"
+                aria-label="Subscribe"
+                className="shrink-0 h-10 w-10 rounded-full bg-ember text-white flex items-center justify-center hover:bg-ember-hover transition-colors"
               >
-                <FaInstagram size={20} />
-              </a>
-              <a
-                href="https://x.com/dtrglobal"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X"
-                className="hover:text-ember transition-colors"
-              >
-                <FaXTwitter size={20} />
-              </a>
-              <a
-                href="https://facebook.com/dtrglobal"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="hover:text-ember transition-colors"
-              >
-                <FaFacebook size={20} />
-              </a>
-            </div>
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </form>
+            <p className="text-[10px] text-ash mt-3">
+              Opens your email client — we don't store emails yet.
+            </p>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p className="text-xs text-ash">
-          © {new Date().getFullYear()} DTR Global. Founded by Nii Nerte Nettey.
-        </p>
-          <p className="text-xs text-ash">Made in Accra.</p>
+        <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-ash">
+          <p>© {new Date().getFullYear()} DTR Global. All rights reserved.</p>
+          <p className="italic text-ember font-semibold">Good Vibes Only</p>
         </div>
       </div>
     </footer>

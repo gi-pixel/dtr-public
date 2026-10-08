@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  /* Blacks — anchored on brand #171717 */
+  /* Blacks — true neutral, anchored on brand #171717 */
   --color-ink: #0A0A0A;
-  --color-surface: #171717;
-  --color-surface-2: #1F1F1F;
-  --color-border: #2A2A2A;
-  --color-border-bright: #3A3A3A;
+  --color-surface: #141414;
+  --color-surface-2: #1C1C1C;
+  --color-border: #262626;
+  --color-border-bright: #383838;
 
-  /* Orange hierarchy — anchored on brand #F25623 */
-  --color-ember: #F25623;
-  --color-ember-hover: #DA4A1C;
+  /* Orange — bold, close to reference */
+  --color-ember: #F05A28;
+  --color-ember-hover: #D94A1A;
   --color-rust: #B23A12;
   --color-glow: #FF7A3D;
 
-  /* Neutrals */
-  --color-cream: #F5EBDE;
-  --color-sand: #B8A493;
-  --color-ash: #7A6B5D;
+  /* Neutrals — true white + neutral grays */
+  --color-cream: #FFFFFF;
+  --color-sand: #A3A3A3;
+  --color-ash: #6E6E6E;
 }
 
 @theme inline {
@@ -60,88 +60,53 @@
 
   ::selection {
     background: var(--color-ember);
-    color: var(--color-ink);
+    color: #FFFFFF;
   }
 
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--color-ink);
-  }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--color-ink); }
   ::-webkit-scrollbar-thumb {
     background: var(--color-border-bright);
     border-radius: 999px;
   }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-ember);
-  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-ember); }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .text-pretty {
-    text-wrap: pretty;
-  }
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
 
   .grain::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
     pointer-events: none;
     mix-blend-mode: overlay;
   }
 
   .glow-ember {
-    box-shadow: 0 0 0 0 rgba(242, 86, 35, 0);
+    box-shadow: 0 0 0 0 rgba(240, 90, 40, 0);
     transition: box-shadow 0.3s ease;
   }
   .glow-ember:hover {
-    box-shadow: 0 0 32px 0 rgba(242, 86, 35, 0.35);
+    box-shadow: 0 0 32px 0 rgba(240, 90, 40, 0.4);
   }
 
-  /* ─── Black → orange gradients ─── */
+  .bg-gradient-ember-diag {
+    background: linear-gradient(135deg, #0A0A0A 0%, #141414 55%, #2A130A 100%);
+  }
 
-.bg-gradient-ember-diag {
-  background: linear-gradient(
-    135deg,
-    #0A0A0A 0%,
-    #171717 45%,
-    #3A1A0A 85%,
-    #5A2410 100%
-  );
-}
+  .bg-gradient-ember-up {
+    background: linear-gradient(to top, rgba(240, 90, 40, 0.28) 0%, rgba(240, 90, 40, 0.08) 40%, transparent 75%);
+  }
 
-.bg-gradient-ember-up {
-  background: linear-gradient(
-    to top,
-    rgba(242, 86, 35, 0.25) 0%,
-    rgba(242, 86, 35, 0.08) 40%,
-    transparent 75%
-  );
-}
+  .bg-gradient-ember-radial {
+    background: radial-gradient(circle at center, rgba(240, 90, 40, 0.35) 0%, rgba(240, 90, 40, 0.10) 35%, transparent 70%);
+  }
 
-.bg-gradient-ember-radial {
-  background: radial-gradient(
-    circle at center,
-    rgba(242, 86, 35, 0.35) 0%,
-    rgba(242, 86, 35, 0.12) 35%,
-    transparent 70%
-  );
-}
-
-/* Section divider — thin orange gradient line */
-.divider-ember {
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(242, 86, 35, 0.5) 50%,
-    transparent 100%
-  );
-}
+  .divider-ember {
+    height: 1px;
+    background: linear-gradient(to right, transparent 0%, rgba(240, 90, 40, 0.5) 50%, transparent 100%);
+  }
 }

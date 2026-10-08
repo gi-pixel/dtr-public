@@ -4,7 +4,7 @@ export async function getPublishedEvents() {
   const { data, error } = await supabase
     .from('events')
     .select(
-      'id, title, slug, image_url, event_date, event_time, venue_name, price_info, is_featured, categories(name)'
+      'id, title, slug, description, image_url, event_date, event_time, venue_name, price_info, ticket_url, is_featured, categories(name)'
     )
     .eq('status', 'published')
     .order('event_date', { ascending: true })
@@ -31,7 +31,7 @@ export async function getRelatedEvents(categoryId: string, excludeId: string) {
   const { data, error } = await supabase
     .from('events')
     .select(
-      'id, title, slug, image_url, event_date, event_time, venue_name, price_info, is_featured, categories(name)'
+      'id, title, slug, description, image_url, event_date, event_time, venue_name, price_info, ticket_url, is_featured, categories(name)'
     )
     .eq('category_id', categoryId)
     .eq('status', 'published')
