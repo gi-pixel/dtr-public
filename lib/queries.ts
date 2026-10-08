@@ -65,7 +65,7 @@ export async function getFilteredEvents(filters: {
   let query = supabase
     .from('events')
     .select(
-      'id, title, slug, image_url, event_date, event_time, venue_name, price_info, is_featured, categories(name)'
+      'id, title, slug, description, image_url, event_date, event_time, venue_name, price_info, ticket_url, is_featured, categories(name)'
     )
     .eq('status', 'published')
 
