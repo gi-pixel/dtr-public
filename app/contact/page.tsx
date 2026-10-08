@@ -22,17 +22,10 @@ export default function ContactPage() {
       {/* ─────────────────── HERO ─────────────────── */}
       <section className="relative pt-40 pb-24 grain">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 pointer-events-none">
-          <div className="w-[800px] h-[800px] rounded-full bg-ember/8 blur-[140px]" />
+          <div className="w-[900px] h-[900px] rounded-full bg-gradient-ember-radial" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6">
-          <Reveal>
-            <span className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-ember font-medium mb-10">
-              <span className="w-8 h-px bg-ember" />
-              Get in touch
-            </span>
-          </Reveal>
-
           <Reveal delay={0.1}>
             <h1 className="text-balance text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-[-0.035em] leading-[0.98] text-cream max-w-3xl font-[family-name:var(--font-heading)]">
               Say hello.
@@ -126,9 +119,10 @@ export default function ContactPage() {
           <div className="lg:col-span-3">
             <Reveal delay={0.1}>
               <div className="relative rounded-3xl border border-border bg-surface overflow-hidden">
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ember/50 to-transparent" />
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ember to-transparent" />
+                <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-gradient-ember-radial opacity-50 pointer-events-none" />
 
-                <div className="p-8 sm:p-12">
+                <div className="relative p-8 sm:p-12">
                   <div className="mb-8">
                     <h2 className="text-3xl sm:text-4xl font-extrabold text-cream mb-3 font-[family-name:var(--font-heading)] leading-tight">
                       Send a message
@@ -151,8 +145,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-6 py-32">
           <Reveal>
             <div className="mb-16 max-w-2xl">
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-                <span className="w-6 h-px bg-ember" />
+              <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
                 Before you write
               </span>
               <h2 className="text-4xl sm:text-5xl font-extrabold text-cream leading-[1.02] font-[family-name:var(--font-heading)]">
@@ -189,8 +182,9 @@ export default function ContactPage() {
               },
             ].map((faq, i) => (
               <Reveal key={faq.q} delay={i * 0.05}>
-                <div className="h-full p-7 rounded-2xl bg-ink border border-border hover:border-ember/50 transition-colors">
-                  <div className="flex items-start gap-4">
+                <div className="relative h-full p-7 rounded-2xl bg-ink border border-border hover:border-ember/60 transition-colors overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-ember-up opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative flex items-start gap-4">
                     <div className="shrink-0 mt-1 h-8 w-8 rounded-full bg-ember/10 border border-ember/30 flex items-center justify-center">
                       <MessageSquare className="h-3.5 w-3.5 text-ember" />
                     </div>
@@ -212,7 +206,8 @@ export default function ContactPage() {
 
       {/* ─────────────────── CTA ─────────────────── */}
       <section className="relative grain">
-        <div className="absolute inset-0 bg-gradient-to-br from-ember/15 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ember/40 via-ink to-ink" />
+        <div className="absolute inset-0 bg-gradient-ember-radial opacity-60" />
         <div className="relative max-w-5xl mx-auto px-6 py-32 text-center">
           <Reveal>
             <h2 className="text-balance text-4xl sm:text-6xl lg:text-7xl font-extrabold text-cream leading-[1] mb-8 font-[family-name:var(--font-heading)]">
@@ -220,7 +215,7 @@ export default function ContactPage() {
               <br />
               <span className="text-ember">to start?</span>
             </h2>
-            <p className="text-lg sm:text-xl text-cream/70 max-w-xl mx-auto mb-12">
+            <p className="text-lg sm:text-xl text-cream/80 max-w-xl mx-auto mb-12">
               Browse what's on first. If something's missing, that's what the
               form is for.
             </p>
@@ -263,9 +258,10 @@ function ContactCard({
   href?: string
 }) {
   const inner = (
-    <div className="relative p-6 rounded-2xl bg-surface border border-border hover:border-ember/50 transition-colors group">
-      <div className="flex items-start gap-4">
-        <div className="shrink-0 h-11 w-11 rounded-full bg-ember/10 border border-ember/30 flex items-center justify-center text-ember group-hover:bg-ember/15 transition-colors">
+    <div className="relative p-6 rounded-2xl bg-surface border border-border hover:border-ember/60 transition-colors group overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-ember-up opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="relative flex items-start gap-4">
+        <div className="shrink-0 h-11 w-11 rounded-full bg-ember/10 border border-ember/30 flex items-center justify-center text-ember group-hover:bg-ember/20 transition-colors">
           {icon}
         </div>
         <div className="min-w-0">

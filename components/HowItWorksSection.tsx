@@ -18,13 +18,9 @@ const steps = [
 
 export default function HowItWorksSection() {
   return (
-    <section className="relative border-y border-border bg-surface">
+    <section className="relative border-y border-border bg-gradient-ember-diag">
       <div className="max-w-7xl mx-auto px-6 py-24">
         <div className="mb-16 max-w-xl">
-          <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-4">
-            <span className="w-6 h-px bg-ember" />
-            How it works
-          </span>
           <h2 className="text-balance text-4xl sm:text-5xl font-extrabold text-cream font-[family-name:var(--font-heading)] leading-[1.05]">
             Three steps to your next event.
           </h2>
@@ -34,15 +30,19 @@ export default function HowItWorksSection() {
           {steps.map((s) => (
             <div
               key={s.n}
-              className="relative p-8 rounded-2xl bg-ink border border-border hover:border-ember/50 transition-colors group"
+              className="relative p-8 rounded-2xl bg-ink border border-border hover:border-ember/60 transition-colors group overflow-hidden"
             >
-              <div className="text-ember/40 text-6xl font-extrabold leading-none mb-6 font-[family-name:var(--font-heading)] group-hover:text-ember/70 transition-colors">
-                {s.n}
+              <div className="absolute inset-0 bg-gradient-ember-up opacity-0 group-hover:opacity-100 transition-opacity" />
+
+              <div className="relative">
+                <div className="text-ember/40 text-6xl font-extrabold leading-none mb-6 font-[family-name:var(--font-heading)] group-hover:text-ember/70 transition-colors">
+                  {s.n}
+                </div>
+                <h3 className="text-xl font-bold text-cream mb-3 font-[family-name:var(--font-heading)]">
+                  {s.title}
+                </h3>
+                <p className="text-sand leading-relaxed">{s.body}</p>
               </div>
-              <h3 className="text-xl font-bold text-cream mb-3 font-[family-name:var(--font-heading)]">
-                {s.title}
-              </h3>
-              <p className="text-sand leading-relaxed">{s.body}</p>
             </div>
           ))}
         </div>

@@ -36,12 +36,16 @@ export default async function EventsPage({
   const title = activeCategory ? activeCategory.name : 'All Events'
 
   return (
-    <main className="pt-32 pb-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <main className="relative overflow-hidden pt-32 pb-24">
+      {/* Radial ember bloom behind the page header */}
+      <div className="absolute top-40 left-1/2 -translate-x-1/2 pointer-events-none">
+        <div className="w-[800px] h-[800px] rounded-full bg-gradient-ember-radial opacity-50" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6">
         <Reveal>
           <header className="mb-12">
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-              <span className="w-6 h-px bg-ember" />
+            <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
               The full list
             </span>
             <h1 className="text-balance text-5xl sm:text-7xl font-extrabold tracking-tight text-cream leading-[0.98] font-[family-name:var(--font-heading)] mb-4">

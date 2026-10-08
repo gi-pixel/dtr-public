@@ -103,4 +103,45 @@
   .glow-ember:hover {
     box-shadow: 0 0 32px 0 rgba(242, 86, 35, 0.35);
   }
+
+  /* ─── Black → orange gradients ─── */
+
+.bg-gradient-ember-diag {
+  background: linear-gradient(
+    135deg,
+    #0A0A0A 0%,
+    #171717 45%,
+    #3A1A0A 85%,
+    #5A2410 100%
+  );
+}
+
+.bg-gradient-ember-up {
+  background: linear-gradient(
+    to top,
+    rgba(242, 86, 35, 0.25) 0%,
+    rgba(242, 86, 35, 0.08) 40%,
+    transparent 75%
+  );
+}
+
+.bg-gradient-ember-radial {
+  background: radial-gradient(
+    circle at center,
+    rgba(242, 86, 35, 0.35) 0%,
+    rgba(242, 86, 35, 0.12) 35%,
+    transparent 70%
+  );
+}
+
+/* Section divider — thin orange gradient line */
+.divider-ember {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(242, 86, 35, 0.5) 50%,
+    transparent 100%
+  );
+}
 }

@@ -19,17 +19,10 @@ export default function AboutPage() {
       {/* ─────────────────── HERO ─────────────────── */}
       <section className="relative pt-40 pb-32 grain">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 pointer-events-none">
-          <div className="w-[900px] h-[900px] rounded-full bg-ember/0.2 blur-[140px]" />
+          <div className="w-[1000px] h-[1000px] rounded-full bg-gradient-ember-radial" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6">
-          <Reveal>
-            <span className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-ember font-medium mb-10">
-              <span className="w-8 h-px bg-ember" />
-              Since 2025 · Founded by Nii Nerte Nettey
-            </span>
-          </Reveal>
-
           <Reveal delay={0.1}>
             <h1 className="text-balance text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-[-0.035em] leading-[0.98] text-cream max-w-4xl font-[family-name:var(--font-heading)]">
               More than a party.
@@ -68,8 +61,7 @@ export default function AboutPage() {
           <div className="lg:col-span-4">
             <Reveal>
               <div className="lg:sticky lg:top-32">
-                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-                  <span className="w-6 h-px bg-ember" />
+                <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
                   Who we are
                 </span>
                 <h2 className="text-4xl sm:text-5xl font-extrabold text-cream leading-[1.02] font-[family-name:var(--font-heading)]">
@@ -118,13 +110,12 @@ export default function AboutPage() {
       </section>
 
       {/* ─────────────────── MISSION + VISION ─────────────────── */}
-      <section className="border-y border-border bg-surface">
+      <section className="border-y border-border bg-gradient-ember-diag">
         <div className="max-w-7xl mx-auto px-6 py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <Reveal>
               <div>
-                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-                  <span className="w-6 h-px bg-ember" />
+                <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
                   Our mission
                 </span>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-cream leading-[1.05] font-[family-name:var(--font-heading)] mb-6">
@@ -141,8 +132,7 @@ export default function AboutPage() {
 
             <Reveal delay={0.1}>
               <div>
-                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-                  <span className="w-6 h-px bg-ember" />
+                <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
                   Our vision
                 </span>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-cream leading-[1.05] font-[family-name:var(--font-heading)] mb-6">
@@ -161,7 +151,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─────────────────── PULL QUOTE ─────────────────── */}
-      <section className="relative py-28 grain">
+      <section className="relative py-28 grain bg-gradient-to-br from-ember/30 via-ink to-ink">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <Reveal>
             <p className="text-3xl sm:text-5xl lg:text-6xl text-cream leading-[1.15] font-light text-balance font-[family-name:var(--font-heading)] tracking-tight">
@@ -182,8 +172,7 @@ export default function AboutPage() {
       <section className="border-t border-border max-w-7xl mx-auto px-6 py-32">
         <Reveal>
           <div className="mb-16 max-w-xl">
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-              <span className="w-6 h-px bg-ember" />
+            <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
               What we stand for
             </span>
             <h2 className="text-4xl sm:text-5xl font-extrabold text-cream leading-[1.02] font-[family-name:var(--font-heading)]">
@@ -222,6 +211,7 @@ export default function AboutPage() {
           ].map((v, i) => (
             <Reveal key={v.n} delay={i * 0.08}>
               <div className="relative h-full p-8 rounded-3xl bg-surface border border-border hover:border-ember/60 transition-colors overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-ember-up opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute top-6 right-6 text-ember/25 text-7xl font-extrabold leading-none font-[family-name:var(--font-heading)] group-hover:text-ember/40 transition-colors">
                   {v.n}
                 </div>
@@ -243,8 +233,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal>
               <div>
-                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-6">
-                  <span className="w-6 h-px bg-ember" />
+                <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-6">
                   Flagship experience
                 </span>
                 <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-cream leading-[1] font-[family-name:var(--font-heading)] mb-8">
@@ -265,13 +254,12 @@ export default function AboutPage() {
             </Reveal>
 
             <Reveal delay={0.15}>
-              <div className="relative aspect-square rounded-3xl border border-border bg-ink overflow-hidden">
+              <div className="relative aspect-square rounded-3xl border border-border bg-gradient-ember-diag overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-ember/15 text-[200px] sm:text-[280px] font-extrabold leading-none font-[family-name:var(--font-heading)] select-none">
+                  <span className="text-ember/25 text-[200px] sm:text-[280px] font-extrabold leading-none font-[family-name:var(--font-heading)] select-none">
                     DR
                   </span>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-tr from-ember/20 via-transparent to-transparent" />
                 <div className="absolute top-8 left-8 bg-ink/80 backdrop-blur-md border border-border-bright rounded-full px-4 py-2 text-xs text-cream/80">
                   Themed nightlife
                 </div>
@@ -289,8 +277,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <Reveal>
             <div>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-6">
-                <span className="w-6 h-px bg-ember" />
+              <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-6">
                 How it works
               </span>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-cream leading-[1] font-[family-name:var(--font-heading)] mb-8">
@@ -313,13 +300,12 @@ export default function AboutPage() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <div className="relative aspect-square rounded-3xl border border-border bg-ink overflow-hidden">
+            <div className="relative aspect-square rounded-3xl border border-border bg-gradient-ember-diag overflow-hidden">
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-ember/15 text-[200px] sm:text-[280px] font-extrabold leading-none font-[family-name:var(--font-heading)] select-none">
+                <span className="text-ember/25 text-[200px] sm:text-[280px] font-extrabold leading-none font-[family-name:var(--font-heading)] select-none">
                   DTR
                 </span>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-tr from-ember/5 via-transparent to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink" />
 
               <div className="absolute top-8 left-8 bg-ink/80 backdrop-blur-md border border-border-bright rounded-full px-4 py-2 text-xs text-cream/80">
@@ -341,8 +327,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 py-32">
           <Reveal>
             <div className="mb-16 max-w-xl">
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-                <span className="w-6 h-px bg-ember" />
+              <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
                 What we do
               </span>
               <h2 className="text-4xl sm:text-5xl font-extrabold text-cream leading-[1.02] font-[family-name:var(--font-heading)]">
@@ -376,6 +361,7 @@ export default function AboutPage() {
             ].map((area, i) => (
               <Reveal key={area.n} delay={i * 0.08}>
                 <div className="relative h-full p-8 rounded-3xl bg-ink border border-border hover:border-ember/60 transition-colors overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-ember-up opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="absolute top-6 right-6 text-ember/25 text-7xl font-extrabold leading-none font-[family-name:var(--font-heading)] group-hover:text-ember/40 transition-colors">
                     {area.n}
                   </div>
@@ -398,8 +384,7 @@ export default function AboutPage() {
       <section className="max-w-7xl mx-auto px-6 py-32">
         <Reveal>
           <div className="mb-16 max-w-xl">
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-              <span className="w-6 h-px bg-ember" />
+            <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
               Who it's for
             </span>
             <h2 className="text-4xl sm:text-5xl font-extrabold text-cream leading-[1.02] font-[family-name:var(--font-heading)]">
@@ -435,8 +420,7 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto px-6 py-32">
           <Reveal>
             <div className="mb-16 text-center">
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-                <span className="w-6 h-px bg-ember" />
+              <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
                 The roadmap
               </span>
               <h2 className="text-4xl sm:text-5xl font-extrabold text-cream leading-[1.02] font-[family-name:var(--font-heading)]">
@@ -446,7 +430,7 @@ export default function AboutPage() {
           </Reveal>
 
           <div className="relative">
-            <div className="absolute left-6 sm:left-1/2 top-0 bottom-0 w-px bg-border" />
+            <div className="absolute left-6 sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-ember/60 via-ember/20 to-transparent" />
 
             <div className="space-y-16">
               {[
@@ -501,7 +485,8 @@ export default function AboutPage() {
 
       {/* ─────────────────── CTA ─────────────────── */}
       <section className="relative grain">
-        <div className="absolute inset-0 bg-gradient-to-br from-ember/20 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ember/40 via-ink to-ink" />
+        <div className="absolute inset-0 bg-gradient-ember-radial opacity-60" />
         <div className="relative max-w-5xl mx-auto px-6 py-32 text-center">
           <Reveal>
             <h2 className="text-balance text-4xl sm:text-6xl lg:text-7xl font-extrabold text-cream leading-[1] mb-8 font-[family-name:var(--font-heading)]">
@@ -509,7 +494,7 @@ export default function AboutPage() {
               <br />
               <span className="text-ember">A culture. A movement.</span>
             </h2>
-            <p className="text-lg sm:text-xl text-cream/70 max-w-xl mx-auto mb-12">
+            <p className="text-lg sm:text-xl text-cream/80 max-w-xl mx-auto mb-12">
               Be part of what's next. Browse what's on, or get your event
               in front of the right crowd.
             </p>

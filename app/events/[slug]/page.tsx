@@ -170,9 +170,9 @@ export default async function EventDetailPage({
         {/* Warm gradient — light top (header legibility), heavy bottom (text) */}
         <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink" />
 
-        {/* Warm glow behind the title for a bit of atmosphere */}
+        {/* Ember bloom behind the title for atmosphere */}
         <div className="absolute inset-x-0 bottom-0 pointer-events-none">
-          <div className="w-[600px] h-[400px] mx-auto rounded-full bg-ember/8 blur-[120px]" />
+          <div className="w-[700px] h-[500px] mx-auto rounded-full bg-gradient-ember-radial opacity-70" />
         </div>
 
         <div className="relative z-10 h-full max-w-7xl mx-auto px-6 flex flex-col justify-end pb-20">
@@ -269,8 +269,7 @@ export default async function EventDetailPage({
           {event.description && (
             <Reveal>
               <div>
-                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-                  <span className="w-6 h-px bg-ember" />
+                <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
                   About this event
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-cream mb-6 font-[family-name:var(--font-heading)]">
@@ -286,8 +285,7 @@ export default async function EventDetailPage({
           {gallery.length > 0 && (
             <Reveal>
               <div>
-                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-                  <span className="w-6 h-px bg-ember" />
+                <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
                   Gallery
                 </span>
                 <EventGallery images={gallery} />
@@ -308,43 +306,48 @@ export default async function EventDetailPage({
         {/* STICKY TICKET CARD */}
         <aside className="lg:col-span-1">
           <Reveal>
-            <div className="lg:sticky lg:top-28 rounded-3xl border border-border bg-surface p-8 space-y-6">
-              <div>
-                <p className="text-[11px] uppercase tracking-widest text-ash mb-2">
-                  Price
-                </p>
-                <p className="text-3xl font-extrabold text-ember font-[family-name:var(--font-heading)]">
-                  {event.price_info ?? 'See site'}
+            <div className="relative lg:sticky lg:top-28 rounded-3xl border border-border bg-surface p-8 overflow-hidden">
+              {/* Ember bloom in the corner */}
+              <div className="absolute -top-24 -right-24 w-[300px] h-[300px] rounded-full bg-gradient-ember-radial opacity-70 pointer-events-none" />
+
+              <div className="relative space-y-6">
+                <div>
+                  <p className="text-[11px] uppercase tracking-widest text-ash mb-2">
+                    Price
+                  </p>
+                  <p className="text-3xl font-extrabold text-ember font-[family-name:var(--font-heading)]">
+                    {event.price_info ?? 'See site'}
+                  </p>
+                </div>
+
+                <BuyTicketButton ticketUrl={event.ticket_url} />
+
+                <div className="pt-6 border-t border-border space-y-4 text-sm">
+                  <Row label="Date" value={date.full} />
+                  {time && <Row label="Time" value={time} />}
+                  {event.venue_name && (
+                    <Row label="Venue" value={event.venue_name} />
+                  )}
+                  {categoryName && (
+                    <Row label="Category" value={categoryName} />
+                  )}
+                </div>
+
+                <p className="text-[11px] text-ash leading-relaxed pt-4 border-t border-border">
+                  Ticket purchases happen on the organizer's own platform.
                 </p>
               </div>
-
-              <BuyTicketButton ticketUrl={event.ticket_url} />
-
-              <div className="pt-6 border-t border-border space-y-4 text-sm">
-                <Row label="Date" value={date.full} />
-                {time && <Row label="Time" value={time} />}
-                {event.venue_name && (
-                  <Row label="Venue" value={event.venue_name} />
-                )}
-                {categoryName && (
-                  <Row label="Category" value={categoryName} />
-                )}
-              </div>
-
-              <p className="text-[11px] text-ash leading-relaxed pt-4 border-t border-border">
-                Ticket purchases happen on the organizer's own platform.
-              </p>
             </div>
           </Reveal>
         </aside>
       </section>
 
       {related.length > 0 && (
-        <section className="border-t border-border bg-surface">
+        <section className="relative border-t border-border bg-surface">
+          <div className="divider-ember" />
           <div className="max-w-7xl mx-auto px-6 py-20">
             <Reveal>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-                <span className="w-6 h-px bg-ember" />
+              <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
                 You might also like
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-cream mb-12 font-[family-name:var(--font-heading)]">

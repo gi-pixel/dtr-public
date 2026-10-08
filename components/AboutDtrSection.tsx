@@ -6,10 +6,10 @@ export default function AboutDtrSection() {
       <div className="max-w-5xl mx-auto px-6 py-28">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
           <div className="lg:col-span-3">
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
+            {/* <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
               <span className="w-6 h-px bg-ember" />
               About DTR
-            </span>
+            </span> */}
             <h2 className="text-balance text-4xl sm:text-6xl font-extrabold leading-[0.98] mb-8 font-[family-name:var(--font-heading)]">
               Built for
               <br />

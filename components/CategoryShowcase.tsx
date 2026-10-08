@@ -13,10 +13,6 @@ export default function CategoryShowcase() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-24">
       <div className="mb-12 max-w-xl">
-        <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-4">
-          <span className="w-6 h-px bg-ember" />
-          Browse by category
-        </span>
         <h2 className="text-balance text-4xl sm:text-5xl font-extrabold text-cream font-[family-name:var(--font-heading)] leading-[1.05]">
           Pick your scene.
         </h2>
@@ -27,9 +23,10 @@ export default function CategoryShowcase() {
           <Link
             key={c.slug}
             href={`/events?category=${c.slug}`}
-            className="group flex items-center justify-center h-32 rounded-2xl border border-border bg-surface hover:bg-surface-2 hover:border-ember/60 transition-all"
+            className="group relative flex items-center justify-center h-32 rounded-2xl border border-border bg-surface hover:border-ember/60 transition-all overflow-hidden"
           >
-            <span className="text-cream font-semibold text-sm group-hover:text-ember transition-colors font-[family-name:var(--font-heading)]">
+            <div className="absolute inset-0 bg-gradient-ember-up opacity-0 group-hover:opacity-100 transition-opacity" />
+            <span className="relative text-cream font-semibold text-sm group-hover:text-ember transition-colors font-[family-name:var(--font-heading)]">
               {c.name}
             </span>
           </Link>

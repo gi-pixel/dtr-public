@@ -16,30 +16,24 @@ export default function HeroSection() {
       </video>
 
       {/* Multi-layer gradient: dark at top for header legibility, dark at bottom for content */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-ink" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-ink" />
 
-      {/* Warm glow behind headline */}
+      {/* Warm radial ember bloom behind headline */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="w-[500px] h-[500px] rounded-full bg-ember/4 blur-[100px]" />
+        <div className="w-[900px] h-[900px] rounded-full bg-gradient-ember-radial" />
       </div>
 
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 pt-20">
-        <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ember font-medium mb-8">
-            <span className="w-8 h-px bg-ember" />
-            Since 2025 · Accra
-            <span className="w-8 h-px bg-ember" />
-          </span>
+        <h1 className="text-balance text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-[-0.04em] leading-[0.95] max-w-5xl font-[family-name:var(--font-heading)] mb-8">
+          More than
+          <br />
+          <span className="text-ember">a party.</span>
+        </h1>
 
-          <h1 className="text-balance text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-[-0.04em] leading-[0.95] max-w-5xl font-[family-name:var(--font-heading)] mb-8">
-            More than
-            <br />
-            <span className="text-ember">a party.</span>
-          </h1>
-
-          <p className="text-pretty text-lg sm:text-xl text-cream/70 max-w-xl mb-12">
-            A culture. A movement. Premium nightlife and cultural
-            experiences built for a new generation.
-          </p>
+        <p className="text-pretty text-lg sm:text-xl text-cream/70 max-w-xl mb-12">
+          A culture. A movement. Premium nightlife and cultural
+          experiences built for a new generation.
+        </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <Link
