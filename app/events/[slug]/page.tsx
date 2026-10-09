@@ -6,7 +6,6 @@ import {
   Calendar,
   Clock,
   MapPin,
-  Tag,
   User,
   ArrowLeft,
 } from 'lucide-react'
@@ -29,8 +28,6 @@ function formatDate(dateStr: string) {
       day: 'numeric',
       year: 'numeric',
     }),
-    day: d.toLocaleDateString('en-US', { day: 'numeric' }),
-    month: d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase(),
   }
 }
 
@@ -152,8 +149,8 @@ export default async function EventDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* FULL-BLEED COVER HERO */}
-      <section className="relative h-screen min-h-[640px] w-full overflow-hidden bg-ink grain">
+      {/* ─── HERO — full-bleed cover ─── */}
+      <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-ink">
         {event.image_url ? (
           <Image
             src={event.image_url}
@@ -167,15 +164,9 @@ export default async function EventDetailPage({
           <div className="absolute inset-0 bg-surface" />
         )}
 
-        {/* Warm gradient — light top (header legibility), heavy bottom (text) */}
         <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink" />
 
-        {/* Ember bloom behind the title for atmosphere */}
-        <div className="absolute inset-x-0 bottom-0 pointer-events-none">
-          <div className="w-[700px] h-[500px] mx-auto rounded-full bg-gradient-ember-radial opacity-70" />
-        </div>
-
-        <div className="relative z-10 h-full max-w-7xl mx-auto px-6 flex flex-col justify-end pb-20">
+        <div className="relative z-10 h-full max-w-7xl mx-auto px-6 flex flex-col justify-end pb-16">
           <Link
             href="/events"
             className="inline-flex items-center gap-2 text-cream/70 hover:text-ember text-sm mb-8 w-fit transition-colors"
@@ -184,25 +175,24 @@ export default async function EventDetailPage({
             All events
           </Link>
 
-          <div className="flex flex-wrap items-center gap-3 mb-6">
+          <div className="flex flex-wrap items-center gap-2.5 mb-5">
             {categoryName && (
-              <span className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-widest font-semibold text-ember border border-ember/40 bg-ember/5 px-3 py-1.5 rounded-full backdrop-blur-sm">
+              <span className="inline-flex items-center text-[10px] uppercase tracking-widest font-bold text-white bg-ember px-3 py-1.5 rounded-full">
                 {categoryName}
               </span>
             )}
             {event.is_featured && (
-              <span className="inline-flex items-center text-[11px] uppercase tracking-widest font-bold text-ink bg-ember px-3 py-1.5 rounded-full">
+              <span className="inline-flex items-center text-[10px] uppercase tracking-widest font-bold text-ink bg-white px-3 py-1.5 rounded-full">
                 Featured
               </span>
             )}
           </div>
 
-          <h1 className="text-balance text-4xl sm:text-6xl lg:text-8xl font-extrabold tracking-[-0.04em] text-cream leading-[0.95] max-w-5xl font-[family-name:var(--font-heading)] mb-8 drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
+          <h1 className="text-balance text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.03em] text-cream leading-[0.98] max-w-4xl font-[family-name:var(--font-heading)] mb-6">
             {event.title}
           </h1>
 
-          {/* Quick meta line right under the title */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-cream/80 text-sm sm:text-base">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-cream/85 text-sm sm:text-base">
             <span className="inline-flex items-center gap-2">
               <Calendar className="h-4 w-4 text-ember" />
               {date.full}
@@ -221,33 +211,27 @@ export default async function EventDetailPage({
             )}
           </div>
         </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-ash">
-          <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-          <span className="w-px h-6 bg-gradient-to-b from-ash to-transparent" />
-        </div>
       </section>
 
-      {/* META STRIP */}
-      <section className="border-y border-border bg-surface">
+      {/* ─── META STRIP — WHITE ─── */}
+      <section className="bg-white">
         <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
           <MetaItem
-            icon={<Calendar className="h-5 w-5" />}
+            icon={<Calendar className="h-4 w-4" />}
             label="Date"
             value={date.weekday}
             sub={date.full}
           />
           {time && (
             <MetaItem
-              icon={<Clock className="h-5 w-5" />}
+              icon={<Clock className="h-4 w-4" />}
               label="Time"
               value={time}
             />
           )}
           {event.venue_name && (
             <MetaItem
-              icon={<MapPin className="h-5 w-5" />}
+              icon={<MapPin className="h-4 w-4" />}
               label="Venue"
               value={event.venue_name}
               sub={event.address ?? undefined}
@@ -255,7 +239,7 @@ export default async function EventDetailPage({
           )}
           {event.organizer_name && (
             <MetaItem
-              icon={<User className="h-5 w-5" />}
+              icon={<User className="h-4 w-4" />}
               label="Organizer"
               value={event.organizer_name}
             />
@@ -263,32 +247,21 @@ export default async function EventDetailPage({
         </div>
       </section>
 
-      {/* BODY */}
-      <section className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 lg:grid-cols-3 gap-14">
-        <div className="lg:col-span-2 space-y-14">
+      {/* ─── BODY ─── */}
+      <section className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="lg:col-span-2 space-y-12">
           {event.description && (
             <Reveal>
               <div>
-                <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
+                <span className="inline-block text-xs uppercase tracking-[0.3em] text-ember font-bold mb-4">
                   About this event
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-cream mb-6 font-[family-name:var(--font-heading)]">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-cream mb-5 font-[family-name:var(--font-heading)]">
                   What to expect.
                 </h2>
-                <p className="text-cream/80 text-lg leading-relaxed whitespace-pre-line">
+                <p className="text-sand text-base sm:text-lg leading-relaxed whitespace-pre-line">
                   {event.description}
                 </p>
-              </div>
-            </Reveal>
-          )}
-
-          {gallery.length > 0 && (
-            <Reveal>
-              <div>
-                <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-                  Gallery
-                </span>
-                <EventGallery images={gallery} />
               </div>
             </Reveal>
           )}
@@ -306,54 +279,83 @@ export default async function EventDetailPage({
         {/* STICKY TICKET CARD */}
         <aside className="lg:col-span-1">
           <Reveal>
-            <div className="relative lg:sticky lg:top-28 rounded-3xl border border-border bg-surface p-8 overflow-hidden">
-              {/* Ember bloom in the corner */}
-              <div className="absolute -top-24 -right-24 w-[300px] h-[300px] rounded-full bg-gradient-ember-radial opacity-70 pointer-events-none" />
-
-              <div className="relative space-y-6">
-                <div>
-                  <p className="text-[11px] uppercase tracking-widest text-ash mb-2">
-                    Price
-                  </p>
-                  <p className="text-3xl font-extrabold text-ember font-[family-name:var(--font-heading)]">
-                    {event.price_info ?? 'See site'}
-                  </p>
-                </div>
-
-                <BuyTicketButton ticketUrl={event.ticket_url} />
-
-                <div className="pt-6 border-t border-border space-y-4 text-sm">
-                  <Row label="Date" value={date.full} />
-                  {time && <Row label="Time" value={time} />}
-                  {event.venue_name && (
-                    <Row label="Venue" value={event.venue_name} />
-                  )}
-                  {categoryName && (
-                    <Row label="Category" value={categoryName} />
-                  )}
-                </div>
-
-                <p className="text-[11px] text-ash leading-relaxed pt-4 border-t border-border">
-                  Ticket purchases happen on the organizer's own platform.
+            <div className="lg:sticky lg:top-28 rounded-3xl border border-border bg-surface p-7 space-y-6">
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-ash font-bold mb-2">
+                  Price
+                </p>
+                <p className="text-3xl font-extrabold text-ember font-[family-name:var(--font-heading)]">
+                  {event.price_info ?? 'See site'}
                 </p>
               </div>
+
+              <BuyTicketButton ticketUrl={event.ticket_url} />
+
+              <div className="pt-5 border-t border-border space-y-3 text-sm">
+                <Row label="Date" value={date.full} />
+                {time && <Row label="Time" value={time} />}
+                {event.venue_name && (
+                  <Row label="Venue" value={event.venue_name} />
+                )}
+                {categoryName && (
+                  <Row label="Category" value={categoryName} />
+                )}
+              </div>
+
+              <p className="text-[11px] text-ash leading-relaxed pt-4 border-t border-border">
+                Ticket purchases happen on the organizer's own platform.
+              </p>
             </div>
           </Reveal>
         </aside>
       </section>
 
-      {related.length > 0 && (
-        <section className="relative border-t border-border bg-surface">
-          <div className="divider-ember" />
+      {/* ─── GALLERY — WHITE ─── */}
+      {gallery.length > 0 && (
+        <section className="bg-white">
           <div className="max-w-7xl mx-auto px-6 py-20">
             <Reveal>
-              <span className="inline-flex items-center text-xs uppercase tracking-[0.3em] text-ember font-medium mb-5">
-                You might also like
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-extrabold text-cream mb-12 font-[family-name:var(--font-heading)]">
-                More like this.
-              </h2>
-              <EventGrid events={related} />
+              <div className="mb-10">
+                <span className="inline-block text-xs uppercase tracking-[0.3em] text-ember font-bold mb-4">
+                  Gallery
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-ink font-[family-name:var(--font-heading)]">
+                  From the night.
+                </h2>
+              </div>
+              <EventGallery images={gallery} />
+            </Reveal>
+          </div>
+        </section>
+      )}
+
+      {/* ─── RELATED — ORANGE ─── */}
+      {related.length > 0 && (
+        <section className="bg-ember">
+          <div className="max-w-7xl mx-auto px-6 py-20">
+            <Reveal>
+              <div className="flex items-end justify-between gap-4 mb-10">
+                <div>
+                  <span className="inline-block text-xs uppercase tracking-[0.3em] text-white/80 font-bold mb-3">
+                    You might also like
+                  </span>
+                  <h2 className="text-2xl sm:text-4xl font-extrabold text-white font-[family-name:var(--font-heading)]">
+                    More like this.
+                  </h2>
+                </div>
+                <Link
+                  href="/events"
+                  className="text-sm text-white font-semibold hover:text-white/80 transition-colors inline-flex items-center gap-1.5 shrink-0"
+                >
+                  View all
+                  <span>→</span>
+                </Link>
+              </div>
+
+              {/* Related events on orange band — inverted card styling handled by EventGrid */}
+              <div className="[&_a]:!bg-ink [&_a]:!border-ink [&_a:hover]:!border-white/40 [&_h3]:!text-white [&_span]:!text-white/70">
+                <EventGrid events={related} stagger={false} />
+              </div>
             </Reveal>
           </div>
         </section>
@@ -375,14 +377,14 @@ function MetaItem({
 }) {
   return (
     <div>
-      <div className="flex items-center gap-2 text-ember mb-2">
+      <div className="flex items-center gap-2 text-ember mb-1.5">
         {icon}
-        <span className="text-[10px] uppercase tracking-[0.25em] font-semibold">
+        <span className="text-[10px] uppercase tracking-[0.2em] font-bold">
           {label}
         </span>
       </div>
-      <p className="text-cream font-semibold">{value}</p>
-      {sub && <p className="text-ash text-xs mt-0.5">{sub}</p>}
+      <p className="text-ink font-semibold text-sm">{value}</p>
+      {sub && <p className="text-neutral-500 text-xs mt-0.5">{sub}</p>}
     </div>
   )
 }

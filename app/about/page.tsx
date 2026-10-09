@@ -18,17 +18,10 @@ export default function AboutPage() {
     <main className="overflow-hidden">
       {/* ─── HERO ─── */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-ember/15 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute inset-0 grain opacity-40 pointer-events-none" />
-
+      <div className="absolute inset-0 bg-gradient-to-br from-ember/30 via-ember/5 to-transparent pointer-events-none" />        
+      <div className="absolute inset-0 grain opacity-40 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7">
-            <Reveal>
-              <span className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-ember font-bold mb-8">
-                <span className="w-10 h-px bg-ember" />
-                Since 2025 · Accra
-              </span>
-            </Reveal>
 
             <Reveal delay={0.1}>
               <h1 className="text-balance text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.035em] leading-[0.95] text-cream max-w-3xl font-[family-name:var(--font-heading)]">
@@ -348,14 +341,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── WHO IT'S FOR ─── */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
+    {/* ─── WHO IT'S FOR — WHITE ─── */}
+    <section className="bg-white">
+      <div className="max-w-7xl mx-auto px-6 py-24">
         <Reveal>
           <div className="mb-12 max-w-xl">
             <span className="inline-block text-xs uppercase tracking-[0.3em] text-ember font-bold mb-5">
               Who it's for
             </span>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-cream leading-[1.02] font-[family-name:var(--font-heading)]">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-ink leading-[1.02] font-[family-name:var(--font-heading)]">
               Built for a new generation.
             </h2>
           </div>
@@ -374,14 +368,15 @@ export default function AboutPage() {
             ].map((tag) => (
               <span
                 key={tag}
-                className="px-5 py-3 rounded-full border border-border bg-surface text-cream/80 hover:border-ember/60 hover:text-ember transition-colors text-sm"
+                className="px-5 py-3 rounded-full border border-neutral-200 bg-neutral-50 text-ink hover:border-ember hover:text-ember transition-colors text-sm font-medium"
               >
                 {tag}
               </span>
             ))}
           </div>
         </Reveal>
-      </section>
+      </div>
+    </section>
 
       {/* ─── ROADMAP ─── */}
       <section className="border-y border-border bg-surface">

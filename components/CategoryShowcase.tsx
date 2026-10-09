@@ -19,18 +19,44 @@ const categories = [
 
 export default function CategoryShowcase() {
   return (
-    <section className="bg-white">
-      <div className="max-w-7xl mx-auto px-6 py-16 sm:py-24">
+    <section className="relative overflow-hidden bg-ink">
+      {/* ─── Animated diagonal stripes ─── */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `repeating-linear-gradient(
+            45deg,
+            transparent 0px,
+            transparent 40px,
+            rgba(240, 90, 40, 0.18) 40px,
+            rgba(240, 90, 40, 0.18) 80px
+          )`,
+          backgroundSize: '113px 113px',
+          animation: 'stripe-slide 6s linear infinite',
+        }}
+      />
+
+      {/* ─── Warmer ambient glow on top for depth ─── */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 70% 100% at 50% 50%, rgba(240,90,40,0.15) 0%, transparent 60%)',
+        }}
+      />
+
+      {/* ─── Content ─── */}
+      <div className="relative max-w-7xl mx-auto px-6 py-16 sm:py-24">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
             <span className="inline-block text-xs uppercase tracking-[0.25em] text-ember font-bold mb-3">
               Explore Categories
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-ink font-[family-name:var(--font-heading)] leading-[1.05]">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white font-[family-name:var(--font-heading)] leading-[1.05]">
               Find Your Scene
             </h2>
-            <p className="text-sm sm:text-base text-neutral-600 mt-3 max-w-xl">
-              Different vibes. Same energy. Pick your scene and see what's
+            <p className="text-sm sm:text-base text-sand mt-3 max-w-xl">
+              Different vibes. Same energy. Pick your scene and see what&apos;s
               happening.
             </p>
           </div>
@@ -39,7 +65,7 @@ export default function CategoryShowcase() {
             className="text-sm text-ember font-semibold hover:text-ember-hover transition-colors inline-flex items-center gap-1.5 shrink-0"
           >
             View All Categories
-            <span>→</span>
+            <span>&rarr;</span>
           </Link>
         </div>
 
@@ -50,13 +76,13 @@ export default function CategoryShowcase() {
               <Link
                 key={c.slug}
                 href={`/events?category=${c.slug}`}
-                className="group relative flex flex-col items-center justify-center gap-2 py-6 rounded-xl border border-neutral-200 bg-neutral-50 hover:border-ember hover:bg-white transition-all overflow-hidden"
+                className="group relative flex flex-col items-center justify-center gap-2 py-6 rounded-xl border border-white/10 bg-ink/70 backdrop-blur-sm hover:border-ember/60 hover:bg-ink/90 transition-all overflow-hidden"
               >
                 <Icon
-                  className="h-6 w-6 text-ember"
+                  className="relative h-6 w-6 text-ember"
                   strokeWidth={1.75}
                 />
-                <span className="text-ink text-xs sm:text-sm font-semibold group-hover:text-ember transition-colors font-[family-name:var(--font-heading)] text-center px-1">
+                <span className="relative text-white text-xs sm:text-sm font-semibold group-hover:text-ember transition-colors font-[family-name:var(--font-heading)] text-center px-1">
                   {c.name}
                 </span>
               </Link>

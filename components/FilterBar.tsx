@@ -53,39 +53,54 @@ export default function FilterBar({ categories }: { categories: Category[] }) {
   const hasFilters = !!category || !!search
 
   return (
-    <div className="space-y-6">
-      {/* Search */}
-      <div className="relative">
-        <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-4 w-4 text-ash" />
-        <input
-          type="search"
-          value={search}
-          onChange={(e) => handleSearch(e.target.value)}
-          placeholder="Search events…"
-          className="w-full bg-surface border border-border rounded-full pl-12 pr-12 py-4 text-cream placeholder:text-ash focus:outline-none focus:border-ember/60 focus:ring-1 focus:ring-ember/30 transition-colors"
-        />
-        {search && (
+    <div className="space-y-3">
+      {/* Search + Clear row */}
+      <div className="flex items-center gap-3">
+        <div className="relative max-w-sm w-full">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-ash" />
+          <input
+            type="search"
+            value={search}
+            onChange={(e) => handleSearch(e.target.value)}
+            placeholder="Search events…"
+            className="w-full bg-surface border border-border rounded-full pl-10 pr-9 py-2.5 text-sm text-cream placeholder:text-ash focus:outline-none focus:border-ember/60 focus:ring-1 focus:ring-ember/20 transition-colors"
+          />
+          {search && (
+            <button
+              onClick={() => handleSearch('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-ash hover:text-cream"
+              aria-label="Clear search"
+            >
+              <X className="h-3.5 w-3.5" />
+            </button>
+          )}
+        </div>
+
+        {hasFilters && (
           <button
-            onClick={() => handleSearch('')}
-            className="absolute right-5 top-1/2 -translate-y-1/2 text-ash hover:text-cream"
-            aria-label="Clear search"
+            onClick={() => {
+              setCategory('')
+              setSearch('')
+              router.replace(pathname)
+            }}
+            className="text-xs text-ash hover:text-ember transition-colors uppercase tracking-widest shrink-0"
           >
-            <X className="h-4 w-4" />
+            Clear
           </button>
         )}
       </div>
 
       {/* Category pills */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 -mx-1 px-1">
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 -mx-1 px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <button
           onClick={() => {
             setCategory('')
             push({ category: '' })
           }}
-          className={`shrink-0 px-5 py-2 rounded-full text-sm font-medium transition-colors ${
+          className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-colors ${
             !category
-              ? 'bg-ember text-ink'
-              : 'bg-surface border border-border text-cream/80 hover:border-ember/50 hover:text-ember'
+              ? 'bg-ember text-white'
+              : 'bg-surface border border-border text-cream/80 hover:border-ember/60 hover:text-ember'
           }`}
         >
           All
@@ -99,10 +114,10 @@ export default function FilterBar({ categories }: { categories: Category[] }) {
                 setCategory(active ? '' : c.slug)
                 push({ category: active ? '' : c.slug })
               }}
-              className={`shrink-0 px-5 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-colors ${
                 active
-                  ? 'bg-ember text-ink'
-                  : 'bg-surface border border-border text-cream/80 hover:border-ember/50 hover:text-ember'
+                  ? 'bg-ember text-white'
+                  : 'bg-surface border border-border text-cream/80 hover:border-ember/60 hover:text-ember'
               }`}
             >
               {c.name}
@@ -110,19 +125,6 @@ export default function FilterBar({ categories }: { categories: Category[] }) {
           )
         })}
       </div>
-
-      {hasFilters && (
-        <button
-          onClick={() => {
-            setCategory('')
-            setSearch('')
-            router.replace(pathname)
-          }}
-          className="text-xs text-ash hover:text-ember transition-colors uppercase tracking-widest"
-        >
-          Clear filters
-        </button>
-      )}
     </div>
   )
 }

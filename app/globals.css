@@ -110,3 +110,104 @@
     background: linear-gradient(to right, transparent 0%, rgba(240, 90, 40, 0.5) 50%, transparent 100%);
   }
 }
+
+/* Stage light beam sweeps — 5 independent cycles */
+
+@keyframes beam-sweep-1 {
+  0% {
+    transform: translateX(-30%) rotate(-22deg);
+  }
+  25% {
+    transform: translateX(15%) rotate(6deg);
+  }
+  50% {
+    transform: translateX(-10%) rotate(-14deg);
+  }
+  75% {
+    transform: translateX(20%) rotate(12deg);
+  }
+  100% {
+    transform: translateX(-30%) rotate(-22deg);
+  }
+}
+
+@keyframes beam-sweep-2 {
+  0% {
+    transform: translateX(25%) rotate(18deg);
+  }
+  30% {
+    transform: translateX(-15%) rotate(-8deg);
+  }
+  60% {
+    transform: translateX(10%) rotate(14deg);
+  }
+  100% {
+    transform: translateX(25%) rotate(18deg);
+  }
+}
+
+@keyframes beam-sweep-3 {
+  0% {
+    transform: translateX(0%) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translateX(-30%) rotate(-28deg) scale(1.08);
+  }
+  66% {
+    transform: translateX(30%) rotate(28deg) scale(0.95);
+  }
+  100% {
+    transform: translateX(0%) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes beam-sweep-4 {
+  0% {
+    transform: translateX(10%) rotate(-15deg);
+  }
+  40% {
+    transform: translateX(-25%) rotate(20deg);
+  }
+  70% {
+    transform: translateX(15%) rotate(-5deg);
+  }
+  100% {
+    transform: translateX(10%) rotate(-15deg);
+  }
+}
+
+@keyframes beam-sweep-5 {
+  0% {
+    transform: translateX(-20%) rotate(25deg);
+  }
+  35% {
+    transform: translateX(20%) rotate(-12deg);
+  }
+  70% {
+    transform: translateX(-8%) rotate(18deg);
+  }
+  100% {
+    transform: translateX(-20%) rotate(25deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [style*="beam-sweep"] {
+    animation: none !important;
+  }
+}
+
+@keyframes stripe-slide {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 113px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [style*="stripe-slide"] {
+    animation: none !important;
+  }
+}

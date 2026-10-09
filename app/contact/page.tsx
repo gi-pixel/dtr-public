@@ -51,7 +51,7 @@ export default function ContactPage() {
       {/* ─── HERO ─── */}
       <section className="relative pt-40 pb-20 overflow-hidden">
         {/* Diagonal ember wash — mirrored from About (top-right origin) */}
-        <div className="absolute inset-0 bg-gradient-to-bl from-ember/15 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-bl from-ember/30 via-ember/5 to-transparent pointer-events-none" />
         <div className="absolute inset-0 grain opacity-40 pointer-events-none" />
 
         <div className="relative max-w-4xl mx-auto px-6 text-center">
